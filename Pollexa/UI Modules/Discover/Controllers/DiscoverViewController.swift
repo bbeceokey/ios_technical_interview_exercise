@@ -26,4 +26,8 @@ class DiscoverViewController: UIViewController {
             }
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        <#code#>
+    }
 }
