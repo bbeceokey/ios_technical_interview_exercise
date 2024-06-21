@@ -53,7 +53,22 @@ class PostProvider {
         }
         
         do {
-            let posts = try decoder.decode([Post].self, from: postData)
+            var posts = try decoder.decode([Post].self, from: postData)
+            
+            for i in 0..<posts.count {
+                var post = posts[i]
+                var optionStates: [OptionState] = []
+                
+                       
+                for optionData in post.options {
+                    var option = OptionState(postID: post.id, optionID:optionData.id,isLiked: false, lastLikedDate: Date())
+                            optionStates.append(option)
+                        }
+                        
+                        post.optionsState = optionStates
+                        posts[i] = post
+                    }
+                    
             completion(.success(posts))
         } catch {
             completion(.failure(error))
