@@ -8,9 +8,9 @@
 import Foundation
 
 
-protocol DiscoverModelViewProtocol: AnyObject {
-    //func fetchPosts() -> [Post]
-    var delegate : ViewModelDelegate? { get set}
+protocol DiscoverModelViewProtocol {
+    func fetchPosts()
+    var delegate: ViewModelDelegate? { get set }
     var numberOfItems : Int { get }
     func post(index: Int) -> Post?
     func likedPostState(model : inout OptionState)
@@ -21,21 +21,12 @@ protocol DiscoverModelViewProtocol: AnyObject {
 final class DiscoverModelView {
     private let postProvider = PostProvider.shared
     var posts = [Post]()
+    
     var cell = DiscoverCollectionViewCell()
     weak var viewModelDelegate : ViewModelDelegate?
     
-    func fetchPosts() -> [Post]  {
-        postProvider.fetchAll { result in
-            switch result {
-            case .success(let posts):
-                self.posts = posts
-                print(posts)
-            case .failure(let error):
-                debugPrint(error.localizedDescription)
-            }
-        }
-        return posts
-    }
+    
+    
 }
 
 protocol ViewModelDelegate : AnyObject {
@@ -44,16 +35,33 @@ protocol ViewModelDelegate : AnyObject {
 }
 
 extension DiscoverModelView : DiscoverModelViewProtocol{
-    var delegate: ViewModelDelegate? {
-        get {
-            <#code#>
+    
+    func fetchPosts()  {
+        postProvider.fetchAll { result in
+            switch result {
+            case .success(let decodeData):
+                self.posts = decodeData
+                
+                self.delegate?.reloadData()
+                print(posts)
+            case .failure(let error):
+                debugPrint(error.localizedDescription)
+            }
         }
-        set {
-            <#code#>
-        }
+        
     }
     
-   
+    
+    var delegate: ViewModelDelegate? {
+            get {
+                return viewModelDelegate
+            }
+            set {
+                viewModelDelegate = newValue
+            }
+        }
+    
+    
     var numberOfItems: Int {
         posts.count
     }
@@ -84,7 +92,7 @@ extension DiscoverModelView : DiscoverModelViewProtocol{
     
     func totalVoteCounts(modelPost: Post) -> Int {
          var total = 0
-         for option in modelPost.optionsState {
+         for option in modelPost.optionsState! {
              var voteC = OptionState.voteCount
              total += voteC
          }

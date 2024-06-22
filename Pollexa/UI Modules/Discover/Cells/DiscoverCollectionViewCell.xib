@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UICollectionViewCell"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="discoverCell" id="gTV-IL-0wX" customClass="DiscoverCollectionViewCell" customModule="Pollexa" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="postCell" id="gTV-IL-0wX" customClass="DiscoverCollectionViewCell" customModule="Pollexa" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="388" height="338"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -132,29 +132,12 @@
                 <constraint firstAttribute="bottom" secondItem="yes-TX-7SI" secondAttribute="bottom" id="rS4-4n-y1C"/>
             </constraints>
             <connections>
-                <outlet property="artBoardButton" destination="jA4-2u-QR2" id="26S-4h-7h2"/>
-                <outlet property="lastVoted" destination="uKO-ha-S3d" id="K8a-p9-XL2"/>
-                <outlet property="leftImage" destination="yYR-z3-XeL" id="iZi-8U-IMj"/>
-                <outlet property="postDetail" destination="Lt1-pI-UC5" id="RYG-Ux-4xR"/>
                 <outlet property="postDetailView" destination="ZJK-Wf-YJF" id="etB-PR-ZKm"/>
-                <outlet property="postOwnerName" destination="ryr-fN-RhW" id="8Ao-5G-Pii"/>
-                <outlet property="postOwnerPorfilImage" destination="3iI-QB-nGw" id="nEA-am-JvF"/>
                 <outlet property="postOwnerView" destination="CwX-ef-oog" id="5hW-RT-lJl"/>
-                <outlet property="postRelasedDate" destination="Kzf-4R-wEA" id="VdA-5o-ldz"/>
-                <outlet property="rightImage" destination="BgX-Kr-iKg" id="zC5-B3-qXc"/>
                 <outlet property="stackImageView" destination="0Bh-VH-wEL" id="3s1-KL-NMh"/>
-                <outlet property="totalVotes" destination="V5L-al-rMH" id="sB3-Bb-MOz"/>
             </connections>
             <point key="canvasLocation" x="45.801526717557252" y="19.718309859154932"/>
         </collectionViewCell>
-        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8y1-qI-JKU">
-            <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-            <nil key="textColor"/>
-            <nil key="highlightedColor"/>
-            <point key="canvasLocation" x="469" y="-94"/>
-        </label>
     </objects>
     <resources>
         <image name="avatar_2" width="80" height="80"/>

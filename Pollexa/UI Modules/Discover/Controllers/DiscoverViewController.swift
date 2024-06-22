@@ -18,23 +18,27 @@ class DiscoverViewController: UIViewController, ViewModelDelegate {
     @IBOutlet weak var postAddedBtn: UIButton!
     @IBOutlet weak var profilAvatar: UIImageView!
     
-    var viewModel : DiscoverModelViewProtocol! {
-        didSet {
-            viewModel.delegate = self
-        }
-    }
+   
     // MARK: - Properties
     private let postProvider = PostProvider.shared
+    var viewModel: DiscoverModelViewProtocol = DiscoverModelView()
+
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        postsCollectionView.register(DiscoverCollectionViewCell.self, forCellWithReuseIdentifier: "postCell")
         postsCollectionView.delegate = self
         postsCollectionView.dataSource = self
-        reloadData()
+
+        //reloadData()
     }
     
+    
+    var posts = [Post]()
+    
     override func viewWillAppear(_ animated: Bool) {
+        viewModel.fetchPosts()
         
     }
 }
@@ -45,13 +49,12 @@ extension DiscoverViewController : UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = postsCollectionView.dequeueReusableCell(withReuseIdentifier: "discoverCell", for: indexPath) as! DiscoverCollectionViewCell
-        
-        cell.configurePostDetailView(modelPost: viewModel.post(index: indexPath.row)!)
-        
-        cell.configurePostOwnerView(model: viewModel.post(index: indexPath.row)!.user, postModel: viewModel.post(index: indexPath.row)!)
-        
-        return cell
+        let cell = postsCollectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! DiscoverCollectionViewCell
+           
+           let postModel = viewModel.post(index: indexPath.row)! // Optional unwrapping
+           cell.configurePostDetailView(modelPost: postModel)
+           
+           return cell
     }
     
     

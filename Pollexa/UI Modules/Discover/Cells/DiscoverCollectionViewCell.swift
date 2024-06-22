@@ -26,7 +26,9 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
     
     var viewModel : DiscoverModelViewProtocol!
     
-    func configurePostOwnerView(model : User, postModel:Post) {
+    
+    
+    /*func configurePostOwnerView(model : User, postModel:Post) {
         postOwnerPorfilImage.image = model.image
         postOwnerName.text = model.username
         var date = "\(dateCalculate(model: postModel)) ago"
@@ -39,7 +41,8 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
             artBoardButton.isHidden = true
         }
         
-    }
+    }*/
+    
     
     
     fileprivate func dateCalculate(model: Post) -> String {
@@ -60,7 +63,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
      }
     
     func configurePostDetailView(modelPost: Post){
-        lastVoted.text = modelPost.optionsState[0].lastLikedDateString()
+        
         postDetail.text = modelPost.content
         leftImage.image = modelPost.options[0].image
         rightImage.image = modelPost.options[1].image
