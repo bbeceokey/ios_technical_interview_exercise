@@ -8,8 +8,8 @@
 import Foundation
 
 
-protocol DiscoverModelViewProtocol {
-    func fetchPosts() -> [Post]
+protocol DiscoverModelViewProtocol: AnyObject {
+    //func fetchPosts() -> [Post]
     var delegate : ViewModelDelegate? { get set}
     var numberOfItems : Int { get }
     func post(index: Int) -> Post?
@@ -23,6 +23,19 @@ final class DiscoverModelView {
     var posts = [Post]()
     var cell = DiscoverCollectionViewCell()
     weak var viewModelDelegate : ViewModelDelegate?
+    
+    func fetchPosts() -> [Post]  {
+        postProvider.fetchAll { result in
+            switch result {
+            case .success(let posts):
+                self.posts = posts
+                print(posts)
+            case .failure(let error):
+                debugPrint(error.localizedDescription)
+            }
+        }
+        return posts
+    }
 }
 
 protocol ViewModelDelegate : AnyObject {
@@ -31,7 +44,7 @@ protocol ViewModelDelegate : AnyObject {
 }
 
 extension DiscoverModelView : DiscoverModelViewProtocol{
-    var delegate: (any ViewModelDelegate)? {
+    var delegate: ViewModelDelegate? {
         get {
             <#code#>
         }
@@ -40,8 +53,7 @@ extension DiscoverModelView : DiscoverModelViewProtocol{
         }
     }
     
-    
-    
+   
     var numberOfItems: Int {
         posts.count
     }
@@ -80,18 +92,7 @@ extension DiscoverModelView : DiscoverModelViewProtocol{
      }
     
     
-    func fetchPosts() -> [Post]  {
-        postProvider.fetchAll { result in
-            switch result {
-            case .success(let posts):
-                self.posts = posts
-                print(posts)
-            case .failure(let error):
-                debugPrint(error.localizedDescription)
-            }
-        }
-        return posts
-    }
+    
     
     
 }

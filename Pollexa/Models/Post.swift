@@ -15,4 +15,5 @@ struct Post: Decodable {
     let content: String
     let options: [Option]
     var optionsState: [OptionState]
+    let user : User
 }
