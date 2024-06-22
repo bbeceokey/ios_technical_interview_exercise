@@ -55,6 +55,8 @@ class PostProvider {
         do {
             var posts = try decoder.decode([Post].self, from: postData)
             
+           
+            completion(.success(posts))
             for i in 0..<posts.count {
                 var post = posts[i]
                 var optionStates: [OptionState] = []
@@ -69,7 +71,6 @@ class PostProvider {
                         posts[i] = post
                     }
                     
-            completion(.success(posts))
         } catch {
             completion(.failure(error))
         }

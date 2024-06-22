@@ -168,8 +168,8 @@
 		EBF0423F2C260F7400544CE8 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				EBF042402C260FAE00544CE8 /* DiscoverCollectionViewCell.swift */,
 				EBF042412C260FAE00544CE8 /* DiscoverCollectionViewCell.xib */,
+				EBF042402C260FAE00544CE8 /* DiscoverCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
