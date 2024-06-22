@@ -75,7 +75,7 @@ extension DiscoverModelView : DiscoverModelViewProtocol{
     }
     
     func rangeCalculate(model: Post, optionID: String) -> String {
-        var total = totalVoteCounts(modelPost: model)
+        let total = totalVoteCounts(modelPost: model)
         var voteCount = 0
         var optionsState = model.optionsState
         
@@ -85,7 +85,7 @@ extension DiscoverModelView : DiscoverModelViewProtocol{
             }
         }
         
-        var range = voteCount % total * 100
+        let range = voteCount % total * 100
         return  "%\(range)"
         
     }
@@ -93,7 +93,7 @@ extension DiscoverModelView : DiscoverModelViewProtocol{
     func totalVoteCounts(modelPost: Post) -> Int {
          var total = 0
          for option in modelPost.optionsState! {
-             var voteC = OptionState.voteCount
+             let voteC = OptionState.voteCount
              total += voteC
          }
          return total

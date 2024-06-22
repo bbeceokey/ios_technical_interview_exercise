@@ -25,12 +25,13 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var totalVotes: UILabel!
     
     var viewModel : DiscoverModelViewProtocol!
+
+   
     
     
-    
-    /*func configurePostOwnerView(model : User, postModel:Post) {
-        postOwnerPorfilImage.image = model.image
-        postOwnerName.text = model.username
+    func configurePostOwnerView(postModel:Post) {
+        postOwnerPorfilImage.image = postModel.user?.image
+        postOwnerName.text = postModel.user?.username
         var date = "\(dateCalculate(model: postModel)) ago"
         postRelasedDate.text = date
         
@@ -41,7 +42,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
             artBoardButton.isHidden = true
         }
         
-    }*/
+    }
     
     
     
@@ -67,8 +68,8 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
         postDetail.text = modelPost.content
         leftImage.image = modelPost.options[0].image
         rightImage.image = modelPost.options[1].image
-        totalVotes.text = "\(viewModel.totalVoteCounts(modelPost: modelPost))"
-        
+        //totalVotes.text = "\(viewModel.totalVoteCounts(modelPost: modelPost))"
+        //label.text = modelPost.content
     }
     
    

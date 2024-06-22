@@ -132,9 +132,18 @@
                 <constraint firstAttribute="bottom" secondItem="yes-TX-7SI" secondAttribute="bottom" id="rS4-4n-y1C"/>
             </constraints>
             <connections>
+                <outlet property="artBoardButton" destination="jA4-2u-QR2" id="0VY-y4-uh9"/>
+                <outlet property="lastVoted" destination="uKO-ha-S3d" id="bWC-vH-PTu"/>
+                <outlet property="leftImage" destination="yYR-z3-XeL" id="gOF-iY-Ubn"/>
+                <outlet property="postDetail" destination="Lt1-pI-UC5" id="Xk4-lJ-v9z"/>
                 <outlet property="postDetailView" destination="ZJK-Wf-YJF" id="etB-PR-ZKm"/>
+                <outlet property="postOwnerName" destination="ryr-fN-RhW" id="K0B-d5-8ap"/>
+                <outlet property="postOwnerPorfilImage" destination="3iI-QB-nGw" id="Unc-z1-riO"/>
                 <outlet property="postOwnerView" destination="CwX-ef-oog" id="5hW-RT-lJl"/>
+                <outlet property="postRelasedDate" destination="Kzf-4R-wEA" id="sGp-Hj-vOc"/>
+                <outlet property="rightImage" destination="BgX-Kr-iKg" id="mI6-tx-DTg"/>
                 <outlet property="stackImageView" destination="0Bh-VH-wEL" id="3s1-KL-NMh"/>
+                <outlet property="totalVotes" destination="V5L-al-rMH" id="Kd0-zP-lCh"/>
             </connections>
             <point key="canvasLocation" x="45.801526717557252" y="19.718309859154932"/>
         </collectionViewCell>
