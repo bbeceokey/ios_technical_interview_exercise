@@ -85,7 +85,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
             likeButton.addTarget(self, action: #selector(likeButtonTapped(_:)), for: .touchUpInside)
             imageView.addSubview(likeButton)
             imageView.isUserInteractionEnabled = true
-            likeButton.tag = index
+            likeButton.tag = index // 0 ise sol 1 ise sağ
             likeButton.accessibilityIdentifier = optionId
         }
         
@@ -97,7 +97,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
     
     @objc func likeButtonTapped(_ sender: UIButton) {
             if let optionId = sender.accessibilityIdentifier {
-                delegate?.likeButtonTappedOnImage(sender.tag,optionId: optionId)
+                delegate?.likeButtonTappedOnImage(sender.tag, optionId: optionId)
                 hideAllButtons()
                 //updateLikeButtonState(for: sender.imageView!, optionId: optionId)
             }

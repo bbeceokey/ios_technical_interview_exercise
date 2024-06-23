@@ -92,11 +92,12 @@ extension DiscoverViewController : UICollectionViewDelegate, UICollectionViewDat
                 if let optionIndex = postModel.options.firstIndex(where: { $0.id == optionId }) {
                     postModel.options[optionIndex].isLiked.toggle()
                     viewModel.updatePost(postModel) // Update the view model
-                    //postsCollectionView.reloadItems(at: [IndexPath(item: index, section: 0)]) // Reload the specific item
                 } else {
                     print("Option not found for optionId: \(optionId)")
                 }
     }
+    
+
 }
         
 
