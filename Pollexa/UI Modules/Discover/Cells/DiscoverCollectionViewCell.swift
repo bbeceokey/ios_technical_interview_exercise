@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol DiscoverCollectionViewCellDelegate: AnyObject {
+    func likeButtonTappedOnImage(_ index: Int,optionId: String)
+}
+
+
 class DiscoverCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var postOwnerView: UIView!
@@ -26,7 +31,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
     
     var viewModel : DiscoverModelViewProtocol!
 
-   
+    weak var delegate: DiscoverCollectionViewCellDelegate?
     
     
     func configurePostOwnerView(postModel:Post) {
@@ -63,6 +68,25 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
         }
      }
     
+    func addLikeButtonToImage(imageView: UIImageView, atIndex index: Int, model: Post) {
+        let buttonSize: CGFloat = 40 // Yuvarlak butonun genişliği ve yüksekliği
+        let likeButton = UIButton(type: .custom)
+        likeButton.setImage(UIImage(resource: .artboard), for: .normal)
+        likeButton.frame = CGRect(x: imageView.frame.width - buttonSize, y: 0, width: buttonSize, height: buttonSize)
+        likeButton.layer.cornerRadius = buttonSize / 2
+        likeButton.clipsToBounds = true
+        likeButton.tintColor = .red
+        likeButton.addTarget(self, action: #selector(likeButtonTapped(_:optionId:)), for: .touchUpInside)
+        imageView.addSubview(likeButton)
+        imageView.isUserInteractionEnabled = true
+        likeButton.tag = index
+    }
+    
+    @objc func likeButtonTapped(_ sender: UIButton, optionId : String ) {
+        // Delegate veya closure kullanarak bu tıklama olayını view controller'a iletebiliriz.
+        delegate?.likeButtonTappedOnImage(sender.tag, optionId: optionId)
+    }
+
     func configurePostDetailView(modelPost: Post){
         
         postDetail.text = modelPost.content

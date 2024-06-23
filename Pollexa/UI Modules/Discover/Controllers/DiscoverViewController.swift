@@ -57,7 +57,9 @@ class DiscoverViewController: UIViewController, ViewModelDelegate {
 
 }
 
-extension DiscoverViewController : UICollectionViewDelegate, UICollectionViewDataSource {
+extension DiscoverViewController : UICollectionViewDelegate, UICollectionViewDataSource,DiscoverCollectionViewCellDelegate {
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.numberOfItems
     }
@@ -67,6 +69,8 @@ extension DiscoverViewController : UICollectionViewDelegate, UICollectionViewDat
         let postModel = viewModel.post(index: indexPath.row)! // Optional unwrapping
         cell.configurePostOwnerView(postModel: postModel)
         cell.configurePostDetailView(modelPost: postModel)
+        cell.addLikeButtonToImage(imageView: cell.leftImage, atIndex: 0, model: postModel)
+        cell.addLikeButtonToImage(imageView: cell.rightImage, atIndex: 1, model: postModel)
         cell.backgroundColor = .white  // Hücre arka plan rengini beyaz yapın veya ihtiyacınıza göre ayarlayın
         cell.layer.borderWidth = 1.0  // Hücre kenar çizgisini ekleyin
         cell.layer.borderColor = UIColor.lightGray.cgColor
@@ -74,5 +78,26 @@ extension DiscoverViewController : UICollectionViewDelegate, UICollectionViewDat
         return cell
     }
     
-    
+    func likeButtonTappedOnImage(_ index: Int, optionId: String){
+        
+        for post in posts {
+            if var optionState = post.optionsState?.first(where: { $0.optionID == optionId }) {
+                // optionState'i bulduk, üzerinde değişiklik yapabiliriz
+                print("Found OptionState: \(optionState)")
+                
+                // Örneğin, isLiked durumunu değiştirelim
+                optionState.like() // like() fonksiyonu çağrılabilir
+                
+                
+                
+                // Değişiklikler yapıldıktan sonra model.optionsState güncellenmiş olacak
+            }
+            else {
+               print("OptionState not found for optionId: \(optionId)")
+           }
+        }
+         
+    }
 }
+    
+
