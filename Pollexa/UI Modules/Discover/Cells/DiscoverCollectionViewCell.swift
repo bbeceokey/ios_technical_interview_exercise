@@ -90,11 +90,15 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
         }
         
     }
+    func hideAllButtons() {
+           leftImage.subviews.compactMap { $0 as? UIButton }.first?.isHidden = true
+           rightImage.subviews.compactMap { $0 as? UIButton }.first?.isHidden = true
+       }
     
     @objc func likeButtonTapped(_ sender: UIButton) {
             if let optionId = sender.accessibilityIdentifier {
                 delegate?.likeButtonTappedOnImage(sender.tag,optionId: optionId)
-                sender.isHidden = true
+                hideAllButtons()
                 //updateLikeButtonState(for: sender.imageView!, optionId: optionId)
             }
         }

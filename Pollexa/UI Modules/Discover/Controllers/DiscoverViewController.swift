@@ -69,8 +69,13 @@ extension DiscoverViewController : UICollectionViewDelegate, UICollectionViewDat
                 if let postModel = viewModel.post(index: indexPath.row) {
                     cell.configurePostOwnerView(postModel: postModel)
                     cell.configurePostDetailView(modelPost: postModel)
-                    cell.addLikeButtonToImage(imageView: cell.leftImage, atIndex: 0, optionId: postModel.options[0].id, isLiked: postModel.options[0].isLiked)
-                    cell.addLikeButtonToImage(imageView: cell.rightImage, atIndex: 1, optionId: postModel.options[1].id, isLiked: postModel.options[1].isLiked)
+                    if !postModel.options[0].isLiked{
+                        cell.addLikeButtonToImage(imageView: cell.leftImage, atIndex: 0, optionId: postModel.options[0].id, isLiked: postModel.options[0].isLiked)
+                    }
+                    if !postModel.options[1].isLiked {
+                        cell.addLikeButtonToImage(imageView: cell.rightImage, atIndex: 1, optionId: postModel.options[1].id, isLiked: postModel.options[1].isLiked)
+                    }
+                    
                     cell.backgroundColor = .white
                     cell.layer.borderWidth = 1.0
                     cell.layer.borderColor = UIColor.lightGray.cgColor
