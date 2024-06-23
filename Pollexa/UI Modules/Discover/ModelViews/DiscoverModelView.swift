@@ -16,11 +16,13 @@ protocol DiscoverModelViewProtocol {
     func likedPostState(model : inout OptionState)
     func rangeCalculate(model: Post, optionID: String) -> String
     func totalVoteCounts(modelPost: Post) -> Int
+    func updatePost(_ post: Post)
+    var posts: [Post] { get }
 }
 
 final class DiscoverModelView {
     private let postProvider = PostProvider.shared
-    var posts = [Post]()
+    private(set) var posts = [Post]()
     
     var cell = DiscoverCollectionViewCell()
     weak var viewModelDelegate : ViewModelDelegate?
@@ -35,6 +37,12 @@ protocol ViewModelDelegate : AnyObject {
 }
 
 extension DiscoverModelView : DiscoverModelViewProtocol{
+    
+    func updatePost(_ post: Post) {
+            if let index = posts.firstIndex(where: { $0.id == post.id }) {
+                posts[index] = post
+            }
+        }
     
     func fetchPosts()  {
         postProvider.fetchAll { result in

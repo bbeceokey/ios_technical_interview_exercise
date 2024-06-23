@@ -13,7 +13,7 @@ public struct Post: Decodable {
     let id: String
     let createdAt: Date
     let content: String
-    let options: [Option]
+    var options: [Option]
     var optionsState: [OptionState]?
     let user: User?
    

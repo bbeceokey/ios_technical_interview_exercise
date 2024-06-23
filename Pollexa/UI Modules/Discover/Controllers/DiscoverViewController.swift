@@ -36,7 +36,7 @@ class DiscoverViewController: UIViewController, ViewModelDelegate {
         postsCollectionView.collectionViewLayout = flowLayout
 
         postsCollectionView.register(nib, forCellWithReuseIdentifier: "postCell")
-        reloadData()
+        //reloadData()
     }
     
     
@@ -66,38 +66,35 @@ extension DiscoverViewController : UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = postsCollectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! DiscoverCollectionViewCell
-        let postModel = viewModel.post(index: indexPath.row)! // Optional unwrapping
-        cell.configurePostOwnerView(postModel: postModel)
-        cell.configurePostDetailView(modelPost: postModel)
-        cell.addLikeButtonToImage(imageView: cell.leftImage, atIndex: 0, model: postModel)
-        cell.addLikeButtonToImage(imageView: cell.rightImage, atIndex: 1, model: postModel)
-        cell.backgroundColor = .white  // Hücre arka plan rengini beyaz yapın veya ihtiyacınıza göre ayarlayın
-        cell.layer.borderWidth = 1.0  // Hücre kenar çizgisini ekleyin
-        cell.layer.borderColor = UIColor.lightGray.cgColor
-        cell.layer.zPosition = 1
-        return cell
+                if let postModel = viewModel.post(index: indexPath.row) {
+                    cell.configurePostOwnerView(postModel: postModel)
+                    cell.configurePostDetailView(modelPost: postModel)
+                    cell.addLikeButtonToImage(imageView: cell.leftImage, atIndex: 0, optionId: postModel.options[0].id, isLiked: postModel.options[0].isLiked)
+                    cell.addLikeButtonToImage(imageView: cell.rightImage, atIndex: 1, optionId: postModel.options[1].id, isLiked: postModel.options[1].isLiked)
+                    cell.backgroundColor = .white
+                    cell.layer.borderWidth = 1.0
+                    cell.layer.borderColor = UIColor.lightGray.cgColor
+                    cell.layer.zPosition = 1
+                    cell.delegate = self
+                 
+                    // Set the delegate
+                }
+                return cell
     }
     
-    func likeButtonTappedOnImage(_ index: Int, optionId: String){
-        
-        for post in posts {
-            if var optionState = post.optionsState?.first(where: { $0.optionID == optionId }) {
-                // optionState'i bulduk, üzerinde değişiklik yapabiliriz
-                print("Found OptionState: \(optionState)")
-                
-                // Örneğin, isLiked durumunu değiştirelim
-                optionState.like() // like() fonksiyonu çağrılabilir
-                
-                
-                
-                // Değişiklikler yapıldıktan sonra model.optionsState güncellenmiş olacak
-            }
-            else {
-               print("OptionState not found for optionId: \(optionId)")
-           }
-        }
-         
+    func likeButtonTappedOnImage(_ index: Int, optionId: String) {
+        guard var postModel = viewModel.post(index: index) else { return }
+                if let optionIndex = postModel.options.firstIndex(where: { $0.id == optionId }) {
+                    postModel.options[optionIndex].isLiked.toggle()
+                    viewModel.updatePost(postModel) // Update the view model
+                    //postsCollectionView.reloadItems(at: [IndexPath(item: index, section: 0)]) // Reload the specific item
+                } else {
+                    print("Option not found for optionId: \(optionId)")
+                }
     }
 }
+        
+
+
     
 

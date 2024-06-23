@@ -20,7 +20,7 @@ extension Post {
         // MARK: - Properties
         let id: String
         let image: UIImage
-        
+        var isLiked: Bool = false
         // MARK: - Life Cycle
         init(from decoder: any Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)

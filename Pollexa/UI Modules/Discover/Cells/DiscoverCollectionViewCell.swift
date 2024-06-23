@@ -8,7 +8,8 @@
 import UIKit
 
 protocol DiscoverCollectionViewCellDelegate: AnyObject {
-    func likeButtonTappedOnImage(_ index: Int,optionId: String)
+    func likeButtonTappedOnImage(_ index: Int,optionId: String )
+    
 }
 
 
@@ -68,33 +69,53 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
         }
      }
     
-    func addLikeButtonToImage(imageView: UIImageView, atIndex index: Int, model: Post) {
-        let buttonSize: CGFloat = 40 // Yuvarlak butonun genişliği ve yüksekliği
-        let likeButton = UIButton(type: .custom)
-        likeButton.setImage(UIImage(resource: .artboard), for: .normal)
-        likeButton.frame = CGRect(x: imageView.frame.width - buttonSize, y: 0, width: buttonSize, height: buttonSize)
-        likeButton.layer.cornerRadius = buttonSize / 2
-        likeButton.clipsToBounds = true
-        likeButton.tintColor = .red
-        likeButton.addTarget(self, action: #selector(likeButtonTapped(_:optionId:)), for: .touchUpInside)
-        imageView.addSubview(likeButton)
-        imageView.isUserInteractionEnabled = true
-        likeButton.tag = index
+    func addLikeButtonToImage(imageView: UIImageView, atIndex index: Int, optionId: String, isLiked : Bool) {
+        //imageView.subviews.forEach { $0.removeFromSuperview() }
+        if !isLiked{
+            let buttonSize: CGFloat = 40 
+           
+                        let xOffset: CGFloat = 10 // Adjust as needed
+                        let yOffset: CGFloat = 60 /// Yuvarlak butonun genişliği ve yüksekliği
+            let likeButton = UIButton(type: .custom)
+            likeButton.setImage(UIImage(resource: .artboard), for: .normal)
+            likeButton.frame = CGRect(x: xOffset, y: imageView.frame.height - buttonSize + 60, width: buttonSize, height: buttonSize)
+            likeButton.layer.cornerRadius = buttonSize / 2
+            likeButton.clipsToBounds = true
+            likeButton.tintColor = .red
+            likeButton.addTarget(self, action: #selector(likeButtonTapped(_:)), for: .touchUpInside)
+            imageView.addSubview(likeButton)
+            imageView.isUserInteractionEnabled = true
+            likeButton.tag = index
+            likeButton.accessibilityIdentifier = optionId
+        }
+        
     }
     
-    @objc func likeButtonTapped(_ sender: UIButton, optionId : String ) {
-        // Delegate veya closure kullanarak bu tıklama olayını view controller'a iletebiliriz.
-        delegate?.likeButtonTappedOnImage(sender.tag, optionId: optionId)
-    }
+    @objc func likeButtonTapped(_ sender: UIButton) {
+            if let optionId = sender.accessibilityIdentifier {
+                delegate?.likeButtonTappedOnImage(sender.tag,optionId: optionId)
+                sender.isHidden = true
+                //updateLikeButtonState(for: sender.imageView!, optionId: optionId)
+            }
+        }
+
 
     func configurePostDetailView(modelPost: Post){
         
         postDetail.text = modelPost.content
         leftImage.image = modelPost.options[0].image
         rightImage.image = modelPost.options[1].image
+        
+        //updateLikeButtonState(for: rightImage, isLiked: modelPost.options[1].isLiked)
         //totalVotes.text = "\(viewModel.totalVoteCounts(modelPost: modelPost))"
         //label.text = modelPost.content
     }
+    
+    private func updateLikeButtonState(for imageView: UIImageView, optionId: String) {
+        if let button = imageView.subviews.compactMap({ $0 as? UIButton }).first {
+            button.isHidden = true
+               }
+        }
     
    
     
