@@ -3,6 +3,8 @@
       "id":"post_1",
       "created_at":"2024-04-29T15:12:15Z",
       "content":"Which dessert should I serve at my party?",
+      "isLiked": false,
+      "likedCount": 0,
       "options":[
          {
             "id":"option_1",
@@ -23,6 +25,8 @@
       "id":"post_2",
       "created_at":"2024-04-15T15:12:15Z",
       "content":"Which car should I buy for my next vehicle?",
+      "isLiked": false,
+      "likedCount": 0,
       "options":[
          {
             "id":"option_1",
@@ -43,6 +47,8 @@
       "id":"post_3",
       "created_at":"2024-05-07T15:12:15Z",
       "content":"Where should we go for our anniversary trip?",
+      "isLiked": false,
+      "likedCount": 0,
       "options":[
          {
             "id":"option_1",
@@ -63,6 +69,8 @@
       "id":"post_4",
       "created_at":"2024-05-07T15:12:15Z",
       "content":"Which breed should we choose for our new family pet?",
+      "isLiked": false,
+      "likedCount": 0,
       "options":[
          {
             "id":"option_1",
@@ -83,6 +91,8 @@
       "id":"post_5",
       "created_at":"2024-05-02T15:12:15Z",
       "content":"Which design should we choose for our new office layout?",
+      "isLiked": false,
+      "likedCount": 0,
       "options":[
          {
             "id":"option_1",
@@ -103,6 +113,8 @@
       "id":"post_6",
       "created_at":"2024-04-19T15:12:15Z",
       "content":"Which guitar should I buy as a beginner?",
+      "isLiked": false,
+      "likedCount": 0,
       "options":[
          {
             "id":"option_1",
@@ -123,6 +135,8 @@
       "id":"post_7",
       "created_at":"2024-04-28T15:12:15Z",
       "content":"What theme should we pick for the year-end company party?",
+      "isLiked": false,
+      "likedCount": 0,
       "options":[
          {
             "id":"option_1",

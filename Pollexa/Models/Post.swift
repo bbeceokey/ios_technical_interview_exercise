@@ -13,17 +13,19 @@ public struct Post: Decodable {
     let id: String
     let createdAt: Date
     let content: String
+    var isLiked: Bool
+    var likedCount: Int
     var options: [Option]
-    var optionsState: [OptionState]?
-    let user: User?
-   
     
-    init(id: String, createdAt: Date, content: String, options: [Option], optionsState: [OptionState]?, user: User?) {
+    let user: User?
+        
+    init(id: String, createdAt: Date, content: String, isLiked: Bool = false, likedCount: Int = 0, options: [Option],  user: User?) {
         self.id = id
         self.createdAt = createdAt
         self.content = content
+        self.isLiked = isLiked
+        self.likedCount = likedCount
         self.options = options
-        self.optionsState = optionsState
         self.user = user
     }
 }

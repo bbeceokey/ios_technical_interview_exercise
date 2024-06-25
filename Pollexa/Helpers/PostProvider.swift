@@ -57,19 +57,6 @@ class PostProvider {
             
            
             completion(.success(posts))
-            for i in 0..<posts.count {
-                var post = posts[i]
-                var optionStates: [OptionState] = []
-                
-                       
-                for optionData in post.options {
-                    var option = OptionState(postID: post.id, optionID:optionData.id,isLiked: false, lastLikedDate: Date())
-                            optionStates.append(option)
-                        }
-                        
-                        post.optionsState = optionStates
-                        posts[i] = post
-                    }
                     
         } catch {
             completion(.failure(error))

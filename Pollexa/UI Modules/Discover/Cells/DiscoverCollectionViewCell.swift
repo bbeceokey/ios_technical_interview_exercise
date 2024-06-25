@@ -82,6 +82,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
             likeButton.layer.cornerRadius = buttonSize / 2
             likeButton.clipsToBounds = true
             likeButton.tintColor = .red
+            print("IS LIKED-",isLiked)
             likeButton.addTarget(self, action: #selector(likeButtonTapped(_:)), for: .touchUpInside)
             imageView.addSubview(likeButton)
             imageView.isUserInteractionEnabled = true
@@ -96,6 +97,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
        }
     
     @objc func likeButtonTapped(_ sender: UIButton) {
+    print("LIKE TAPPED")
             if let optionId = sender.accessibilityIdentifier {
                 delegate?.likeButtonTappedOnImage(sender.tag, optionId: optionId)
                 hideAllButtons()
@@ -115,11 +117,6 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
         //label.text = modelPost.content
     }
     
-    private func updateLikeButtonState(for imageView: UIImageView, optionId: String) {
-        if let button = imageView.subviews.compactMap({ $0 as? UIButton }).first {
-            button.isHidden = true
-               }
-        }
     
    
     

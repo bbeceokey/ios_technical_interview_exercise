@@ -14,8 +14,8 @@ protocol DiscoverModelViewProtocol {
     var numberOfItems : Int { get }
     func post(index: Int) -> Post?
     func likedPostState(model : inout OptionState)
-    func rangeCalculate(model: Post, optionID: String) -> String
-    func totalVoteCounts(modelPost: Post) -> Int
+    //func rangeCalculate(model: Post, optionID: String) -> String
+    //func totalVoteCounts(modelPost: Post) -> Int
     func updatePost(_ post: Post)
     var posts: [Post] { get }
 }
@@ -41,6 +41,7 @@ extension DiscoverModelView : DiscoverModelViewProtocol{
     func updatePost(_ post: Post) {
             if let index = posts.firstIndex(where: { $0.id == post.id }) {
                 posts[index] = post
+                print(post.options)
             }
         }
     
@@ -82,10 +83,9 @@ extension DiscoverModelView : DiscoverModelViewProtocol{
         model.like()
     }
     
-    func rangeCalculate(model: Post, optionID: String) -> String {
+    /*func rangeCalculate(model: Post, optionID: String) -> String {
         let total = totalVoteCounts(modelPost: model)
         var voteCount = 0
-        var optionsState = model.optionsState
         
         for option in model.options {
             if option.id == optionID {
@@ -96,16 +96,16 @@ extension DiscoverModelView : DiscoverModelViewProtocol{
         let range = voteCount % total * 100
         return  "%\(range)"
         
-    }
+    }*/
     
-    func totalVoteCounts(modelPost: Post) -> Int {
+    /*func totalVoteCounts(modelPost: Post) -> Int {
          var total = 0
          for option in modelPost.optionsState! {
              let voteC = OptionState.voteCount
              total += voteC
          }
          return total
-     }
+     }*/
     
     
     
