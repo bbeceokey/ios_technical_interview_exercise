@@ -32,7 +32,43 @@
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GkY-Ci-Aii">
                                 <rect key="frame" x="29" y="154" width="335" height="68"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pk2-qm-u5C">
+                                        <rect key="frame" x="273.33333333333331" y="17" width="49.666666666666686" height="35"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="arrowshape.right.circle" catalog="system"/>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="3f4-Ks-72v">
+                                        <rect key="frame" x="21.000000000000004" y="8.0000000000000036" width="47.333333333333343" height="52.333333333333343"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dA4-EK-Ml9">
+                                                <rect key="frame" x="0.0" y="0.0" width="47.333333333333336" height="23"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="See All Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2d-K8-NMb">
+                                                <rect key="frame" x="0.0" y="32" width="47.333333333333336" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="pk2-qm-u5C" secondAttribute="bottom" constant="16" id="CGM-VT-Zmu"/>
+                                    <constraint firstItem="pk2-qm-u5C" firstAttribute="top" secondItem="GkY-Ci-Aii" secondAttribute="top" constant="17" id="FN8-Ko-dfR"/>
+                                    <constraint firstAttribute="trailing" secondItem="pk2-qm-u5C" secondAttribute="trailing" constant="12" id="HPs-Mf-MDb"/>
+                                    <constraint firstItem="3f4-Ks-72v" firstAttribute="leading" secondItem="GkY-Ci-Aii" secondAttribute="leading" constant="21" id="MWK-Ft-qoR"/>
+                                    <constraint firstAttribute="bottom" secondItem="3f4-Ks-72v" secondAttribute="bottom" constant="7.6699999999999999" id="OZQ-Br-Wtl"/>
+                                    <constraint firstItem="pk2-qm-u5C" firstAttribute="top" secondItem="GkY-Ci-Aii" secondAttribute="top" constant="17" id="Phu-xa-zjA"/>
+                                    <constraint firstItem="3f4-Ks-72v" firstAttribute="top" secondItem="GkY-Ci-Aii" secondAttribute="top" constant="8" id="QNS-hg-zeV"/>
+                                    <constraint firstAttribute="trailing" secondItem="pk2-qm-u5C" secondAttribute="trailing" constant="12" id="omt-Oy-lKp"/>
+                                    <constraint firstAttribute="bottom" secondItem="pk2-qm-u5C" secondAttribute="bottom" constant="16" id="uMa-Oe-QFh"/>
+                                    <constraint firstItem="pk2-qm-u5C" firstAttribute="leading" secondItem="3f4-Ks-72v" secondAttribute="trailing" constant="205" id="vEa-VN-XTd"/>
+                                </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3P-OM-FFg">
                                 <rect key="frame" x="318" y="68" width="47" height="34.333333333333343"/>
@@ -81,10 +117,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="Wsg-aF-ZrJ"/>
                     <connections>
+                        <outlet property="activePoll" destination="dA4-EK-Ml9" id="NHP-Em-2Wq"/>
                         <outlet property="postAddedBtn" destination="h3P-OM-FFg" id="j5w-cX-wrt"/>
                         <outlet property="postsCollectionView" destination="emc-QS-XRT" id="hPF-fM-179"/>
                         <outlet property="postsGeneral" destination="GkY-Ci-Aii" id="S5V-GA-GrN"/>
                         <outlet property="profilAvatar" destination="yok-vP-GRq" id="k7f-ll-2NW"/>
+                        <outlet property="seeDetails" destination="W2d-K8-NMb" id="iOg-3B-j8o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -93,6 +131,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrowshape.right.circle" catalog="system" width="128" height="123"/>
         <image name="avatar_1" width="80" height="80"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">

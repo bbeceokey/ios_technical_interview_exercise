@@ -37,8 +37,10 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
     
     func configurePostOwnerView(postModel:Post) {
         postOwnerPorfilImage.image = postModel.user?.image
+        postOwnerName.numberOfLines = 0
         postOwnerName.text = postModel.user?.username
         var date = "\(dateCalculate(model: postModel)) ago"
+        postRelasedDate.numberOfLines = 0
         postRelasedDate.text = date
         
         if date.contains("month"){
@@ -91,30 +93,60 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
         }
         
     }
+    
+    func addLabelToImage(imageView: UIImageView, atIndex index: Int, optionId: String, labelText: String, isHidden: Bool) {
+        let buttonSize: CGFloat = 40
+        let xOffset: CGFloat = 10 // Adjust as needed
+        let yOffset: CGFloat = 60
+
+        let label = UILabel()
+        label.text = labelText
+        label.numberOfLines = 0
+        label.textColor = .purple
+        label.textAlignment = .center
+        label.frame = CGRect(x: xOffset, y: imageView.frame.height - buttonSize - yOffset, width: buttonSize, height: buttonSize)
+        label.layer.cornerRadius = buttonSize / 2
+        label.clipsToBounds = true
+        label.isHidden = isHidden
+        imageView.addSubview(label)
+        label.tag = index + 1000 // Use a different tag to distinguish from the button
+        label.accessibilityIdentifier = optionId
+    }
     func hideAllButtons() {
            leftImage.subviews.compactMap { $0 as? UIButton }.first?.isHidden = true
            rightImage.subviews.compactMap { $0 as? UIButton }.first?.isHidden = true
+    
        }
     
+   
+    
     @objc func likeButtonTapped(_ sender: UIButton) {
-    print("LIKE TAPPED")
+        hideAllButtons()
             if let optionId = sender.accessibilityIdentifier {
                 delegate?.likeButtonTappedOnImage(sender.tag, optionId: optionId)
-                hideAllButtons()
+                
+                
                 //updateLikeButtonState(for: sender.imageView!, optionId: optionId)
+            }
+        }
+    
+    func updateUIForLikedState(_ postModel: Post) {
+            if postModel.isLiked {
+                addLabelToImage(imageView: leftImage, atIndex: 0, optionId: postModel.options[0].id, labelText: viewModel.rangeLeftCalculate(model: postModel), isHidden: false)
+                addLabelToImage(imageView: rightImage, atIndex: 1, optionId: postModel.options[1].id, labelText: viewModel.rangeRightCalculate(model: postModel), isHidden: false)
+            } else {
+                addLikeButtonToImage(imageView: leftImage, atIndex: 0, optionId: postModel.options[0].id, isLiked: postModel.isLiked)
+                addLikeButtonToImage(imageView: rightImage, atIndex: 1, optionId: postModel.options[1].id, isLiked: postModel.isLiked)
             }
         }
 
 
     func configurePostDetailView(modelPost: Post){
-        
         postDetail.text = modelPost.content
         leftImage.image = modelPost.options[0].image
         rightImage.image = modelPost.options[1].image
-        
-        //updateLikeButtonState(for: rightImage, isLiked: modelPost.options[1].isLiked)
-        //totalVotes.text = "\(viewModel.totalVoteCounts(modelPost: modelPost))"
-        //label.text = modelPost.content
+        totalVotes.text = "\(modelPost.likedCount)"
+        totalVotes.numberOfLines = 0
     }
     
     

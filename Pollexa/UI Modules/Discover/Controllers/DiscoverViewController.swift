@@ -18,12 +18,23 @@ class DiscoverViewController: UIViewController, ViewModelDelegate {
     @IBOutlet weak var postAddedBtn: UIButton!
     @IBOutlet weak var profilAvatar: UIImageView!
     
-   
+    @IBOutlet weak var activePoll: UILabel!
+    
+    @IBOutlet weak var seeDetails: UILabel!
     // MARK: - Properties
     private let postProvider = PostProvider.shared
     var viewModel: DiscoverModelViewProtocol = DiscoverModelView()
     
     let nib = UINib(nibName: "DiscoverCollectionViewCell", bundle: nil)
+    
+    func uiManaged(){
+        postsGeneral.layer.cornerRadius = 5.0
+        profilAvatar.layer.cornerRadius = 5.0
+        seeDetails.sizeToFit()
+        activePoll.text = "2 Poll Active"
+        activePoll.numberOfLines = 0
+        activePoll.preferredMaxLayoutWidth = 400
+    }
 
 
     // MARK: - Life Cycle
@@ -31,23 +42,22 @@ class DiscoverViewController: UIViewController, ViewModelDelegate {
         super.viewDidLoad()
         postsCollectionView.delegate = self
         postsCollectionView.dataSource = self
+        uiManaged()
+        viewModel.delegate? = self
         
         let flowLayout = flowLayoutSet()
         postsCollectionView.collectionViewLayout = flowLayout
 
         postsCollectionView.register(nib, forCellWithReuseIdentifier: "postCell")
         viewModel.fetchPosts()
-        //reloadData()
+        
     }
     
     
     var posts = [Post]()
     
     override func viewWillAppear(_ animated: Bool) {
-       
-      
         print("çalıştı")
-        
     }
     
     private func flowLayoutSet() -> UICollectionViewFlowLayout {
@@ -67,38 +77,39 @@ extension DiscoverViewController : UICollectionViewDelegate, UICollectionViewDat
         viewModel.numberOfItems
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = postsCollectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! DiscoverCollectionViewCell
-        print("indexPath",indexPath)
-                var postModel = viewModel.post(index: indexPath.row)
-        cell.configurePostOwnerView(postModel: postModel!)
-        cell.configurePostDetailView(modelPost: postModel!)
-        print("postModel", postModel)
-        if !postModel!.isLiked{
-            cell.addLikeButtonToImage(imageView: cell.leftImage, atIndex: 0, optionId: postModel!.options[0].id, isLiked: postModel!.isLiked)
-                    }
-        if !postModel!.isLiked {
-            cell.addLikeButtonToImage(imageView: cell.rightImage, atIndex: 1, optionId: postModel!.options[1].id, isLiked: postModel!.isLiked)
-                    }
-                    
-                    cell.backgroundColor = .white
-                    cell.layer.borderWidth = 1.0
-                    cell.layer.borderColor = UIColor.lightGray.cgColor
-                    cell.layer.zPosition = 1
-                    cell.delegate = self
-                 
-                    // Set the delegate
-                //reloadData()
-                return cell
-    }
+           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! DiscoverCollectionViewCell
+           var postModel = viewModel.post(index: indexPath.row)!
+           cell.delegate = self
+           cell.viewModel = viewModel
+           cell.configurePostOwnerView(postModel: postModel)
+           cell.configurePostDetailView(modelPost: postModel)
+           cell.backgroundColor = .white
+           cell.layer.borderWidth = 1.0
+           cell.layer.borderColor = UIColor.lightGray.cgColor
+           cell.layer.zPosition = 1
+           cell.updateUIForLikedState(postModel)
+           return cell
+       }
+    
     
     func likeButtonTappedOnImage(_ index: Int, optionId: String) {
-        guard var postModel = viewModel.post(index: index) else { return }
-        postModel.isLiked = true
-        postModel.likedCount += 1
-        viewModel.updatePost(postModel)
+           if let indexPath = viewModel.indexPath(forIndex: index),
+           let cell = postsCollectionView.cellForItem(at: indexPath) as? DiscoverCollectionViewCell {
+            
+            guard var postModel = viewModel.post(index: index) else { return }
+            postModel.isLiked = true
+            postModel.likedCount += 1
+            
+            if let optionIndex = postModel.options.firstIndex(where: { $0.id == optionId }) {
+                postModel.options[optionIndex].optionCount += 1
+            }
+            
+            viewModel.updatePost(postModel)
+            cell.updateUIForLikedState(postModel)
+        }
     }
-    
 
 }
         

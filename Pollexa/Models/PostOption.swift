@@ -15,12 +15,14 @@ extension Post {
         enum CodingKeys: String, CodingKey {
             case id
             case imageName
+            case optionCount
         }
         
         // MARK: - Properties
         let id: String
         let image: UIImage
-        var isLiked: Bool = false
+        var optionCount: Int
+        
         // MARK: - Life Cycle
         init(from decoder: any Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -32,6 +34,7 @@ extension Post {
                 forKey: .imageName
             )
             
+            optionCount = try container.decode(Int.self, forKey: .optionCount)
             if let image = UIImage(named: imageName) {
                 self.image = image
             } else {

@@ -18,6 +18,9 @@ protocol DiscoverModelViewProtocol {
     //func totalVoteCounts(modelPost: Post) -> Int
     func updatePost(_ post: Post)
     var posts: [Post] { get }
+    func rangeLeftCalculate(model: Post) -> String
+    func rangeRightCalculate(model: Post) -> String
+    func indexPath(forIndex index: Int) -> IndexPath?
 }
 
 final class DiscoverModelView {
@@ -51,7 +54,7 @@ extension DiscoverModelView : DiscoverModelViewProtocol{
             case .success(let decodeData):
                 self.posts = decodeData
                 
-                self.delegate?.reloadData()
+                //self.delegate?.reloadData()
                 print(posts)
             case .failure(let error):
                 debugPrint(error.localizedDescription)
@@ -59,6 +62,11 @@ extension DiscoverModelView : DiscoverModelViewProtocol{
         }
         
     }
+    
+    func indexPath(forIndex index: Int) -> IndexPath? {
+            guard index < posts.count else { return nil }
+            return IndexPath(item: index, section: 0)
+        }
     
     
     var delegate: ViewModelDelegate? {
@@ -83,32 +91,20 @@ extension DiscoverModelView : DiscoverModelViewProtocol{
         model.like()
     }
     
-    /*func rangeCalculate(model: Post, optionID: String) -> String {
-        let total = totalVoteCounts(modelPost: model)
-        var voteCount = 0
-        
-        for option in model.options {
-            if option.id == optionID {
-                voteCount = OptionState.voteCount
-            }
-        }
-        
-        let range = voteCount % total * 100
-        return  "%\(range)"
-        
-    }*/
+    func rangeLeftCalculate(model: Post) -> String {
+        let totalCount = model.likedCount
+        let leftCount = model.options[0].optionCount
+        let range = Float(leftCount) / Float(totalCount) * 100
+        let formattedRange = String(format: "%.2f", range)
+        return "%\(formattedRange)"
+    }
     
-    /*func totalVoteCounts(modelPost: Post) -> Int {
-         var total = 0
-         for option in modelPost.optionsState! {
-             let voteC = OptionState.voteCount
-             total += voteC
-         }
-         return total
-     }*/
-    
-    
-    
-    
-    
+    func rangeRightCalculate(model: Post) -> String{
+        let totalCount = model.likedCount
+        let rightCount = model.options[1].optionCount
+        let range = Float(rightCount) / Float(totalCount) * 100
+        let formattedRange = String(format: "%.2f", range)
+        return "%\(formattedRange)"
+    }
+
 }

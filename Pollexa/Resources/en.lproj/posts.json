@@ -8,11 +8,13 @@
       "options":[
          {
             "id":"option_1",
-            "image_name":"post_1_option_1"
+            "image_name":"post_1_option_1",
+            "optionCount": 1
          },
          {
             "id":"option_2",
-            "image_name":"post_1_option_2"
+            "image_name":"post_1_option_2",
+            "optionCount": 0
          }
       ],
       "user":{
@@ -30,11 +32,13 @@
       "options":[
          {
             "id":"option_1",
-            "image_name":"post_2_option_1"
+            "image_name":"post_2_option_1",
+            "optionCount": 0
          },
          {
             "id":"option_2",
-            "image_name":"post_2_option_2"
+            "image_name":"post_2_option_2",
+            "optionCount": 0
          }
       ],
       "user":{
@@ -52,11 +56,13 @@
       "options":[
          {
             "id":"option_1",
-            "image_name":"post_3_option_1"
+            "image_name":"post_3_option_1",
+            "optionCount": 0
          },
          {
             "id":"option_2",
-            "image_name":"post_3_option_2"
+            "image_name":"post_3_option_2",
+            "optionCount": 0
          }
       ],
       "user":{
@@ -74,11 +80,13 @@
       "options":[
          {
             "id":"option_1",
-            "image_name":"post_4_option_1"
+            "image_name":"post_4_option_1",
+            "optionCount": 0
          },
          {
             "id":"option_2",
-            "image_name":"post_4_option_2"
+            "image_name":"post_4_option_2",
+            "optionCount": 0
          }
       ],
       "user":{
@@ -96,11 +104,13 @@
       "options":[
          {
             "id":"option_1",
-            "image_name":"post_5_option_1"
+            "image_name":"post_5_option_1",
+            "optionCount": 0
          },
          {
             "id":"option_2",
-            "image_name":"post_5_option_2"
+            "image_name":"post_5_option_2",
+            "optionCount": 0
          }
       ],
       "user":{
@@ -118,11 +128,13 @@
       "options":[
          {
             "id":"option_1",
-            "image_name":"post_6_option_1"
+            "image_name":"post_6_option_1",
+            "optionCount": 0
          },
          {
             "id":"option_2",
-            "image_name":"post_6_option_2"
+            "image_name":"post_6_option_2",
+            "optionCount": 0
          }
       ],
       "user":{
@@ -140,11 +152,13 @@
       "options":[
          {
             "id":"option_1",
-            "image_name":"post_7_option_1"
+            "image_name":"post_7_option_1",
+            "optionCount": 0
          },
          {
             "id":"option_2",
-            "image_name":"post_7_option_2"
+            "image_name":"post_7_option_2",
+            "optionCount": 0
          }
       ],
       "user":{
