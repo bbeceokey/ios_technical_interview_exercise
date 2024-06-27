@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "AAC2DABD-A7AC-43ED-B504-6373232D1884",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Pollexa.xcodeproj",
+      "identifier" : "6E3A35FD2BF2563400ECE78C",
+      "name" : "Pollexa"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Pollexa.xcodeproj",
+        "identifier" : "EB7BF5352C2E04EC008AAFE2",
+        "name" : "PollexaTests"
+      }
+    }
+  ],
+  "version" : 1
+}
