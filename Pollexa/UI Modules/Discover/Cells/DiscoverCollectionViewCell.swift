@@ -8,7 +8,7 @@
 import UIKit
 
 protocol DiscoverCollectionViewCellDelegate: AnyObject {
-    func likeButtonTappedOnImage(_ index: Int,optionId: String )
+    func likeButtonTappedOnImage(_ index: Int, postId: String)
     
 }
 
@@ -71,7 +71,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
         }
      }
     
-    func addLikeButtonToImage(imageView: UIImageView, atIndex index: Int, optionId: String, isLiked : Bool) {
+    func addLikeButtonToImage(imageView: UIImageView, atIndex index: Int, postId: String, isLiked : Bool) {
         //imageView.subviews.forEach { $0.removeFromSuperview() }
         if !isLiked{
             let buttonSize: CGFloat = 40 
@@ -89,12 +89,12 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
             imageView.addSubview(likeButton)
             imageView.isUserInteractionEnabled = true
             likeButton.tag = index // 0 ise sol 1 ise sağ
-            likeButton.accessibilityIdentifier = optionId
+            likeButton.accessibilityIdentifier = postId
         }
         
     }
     
-    func addLabelToImage(imageView: UIImageView, atIndex index: Int, optionId: String, labelText: String, isHidden: Bool) {
+    func addLabelToImage(imageView: UIImageView, atIndex index: Int, postId: String, labelText: String, isHidden: Bool) {
         let buttonSize: CGFloat = 40
         let xOffset: CGFloat = 10 // Adjust as needed
         let yOffset: CGFloat = 60
@@ -104,13 +104,13 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
         label.numberOfLines = 0
         label.textColor = .purple
         label.textAlignment = .center
-        label.frame = CGRect(x: xOffset, y: imageView.frame.height - buttonSize - yOffset, width: buttonSize, height: buttonSize)
+        label.frame = CGRect(x: xOffset, y: imageView.frame.height - buttonSize + 60, width: buttonSize, height: buttonSize)
         label.layer.cornerRadius = buttonSize / 2
         label.clipsToBounds = true
         label.isHidden = isHidden
         imageView.addSubview(label)
         label.tag = index + 1000 // Use a different tag to distinguish from the button
-        label.accessibilityIdentifier = optionId
+        label.accessibilityIdentifier = postId
     }
     func hideAllButtons() {
            leftImage.subviews.compactMap { $0 as? UIButton }.first?.isHidden = true
@@ -122,8 +122,8 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
     
     @objc func likeButtonTapped(_ sender: UIButton) {
         hideAllButtons()
-            if let optionId = sender.accessibilityIdentifier {
-                delegate?.likeButtonTappedOnImage(sender.tag, optionId: optionId)
+            if let postId = sender.accessibilityIdentifier {
+                delegate?.likeButtonTappedOnImage(sender.tag, postId: postId)
                 
                 
                 //updateLikeButtonState(for: sender.imageView!, optionId: optionId)
@@ -132,11 +132,11 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
     
     func updateUIForLikedState(_ postModel: Post) {
             if postModel.isLiked {
-                addLabelToImage(imageView: leftImage, atIndex: 0, optionId: postModel.options[0].id, labelText: viewModel.rangeLeftCalculate(model: postModel), isHidden: false)
-                addLabelToImage(imageView: rightImage, atIndex: 1, optionId: postModel.options[1].id, labelText: viewModel.rangeRightCalculate(model: postModel), isHidden: false)
+                addLabelToImage(imageView: leftImage, atIndex: 0, postId: postModel.id, labelText: viewModel.rangeLeftCalculate(model: postModel), isHidden: false)
+                addLabelToImage(imageView: rightImage, atIndex: 1, postId: postModel.id, labelText: viewModel.rangeRightCalculate(model: postModel), isHidden: false)
             } else {
-                addLikeButtonToImage(imageView: leftImage, atIndex: 0, optionId: postModel.options[0].id, isLiked: postModel.isLiked)
-                addLikeButtonToImage(imageView: rightImage, atIndex: 1, optionId: postModel.options[1].id, isLiked: postModel.isLiked)
+                addLikeButtonToImage(imageView: leftImage, atIndex: 0, postId: postModel.id, isLiked: postModel.isLiked)
+                addLikeButtonToImage(imageView: rightImage, atIndex: 1, postId: postModel.id, isLiked: postModel.isLiked)
             }
         }
 
