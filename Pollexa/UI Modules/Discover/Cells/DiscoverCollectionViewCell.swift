@@ -51,11 +51,11 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
         }
     
     private func setupProfileImage() {
-            let imageSize: CGFloat = 50.0
-        postOwnerPorfilImage.frame.size = CGSize(width: imageSize, height: imageSize)
-        postOwnerPorfilImage.layer.cornerRadius = imageSize / 2
+        let imageSize = CGSize(width: 34, height: 37)
+        postOwnerPorfilImage.frame.size = imageSize
+        postOwnerPorfilImage.layer.cornerRadius = 10
         postOwnerPorfilImage.clipsToBounds = true
-        postOwnerPorfilImage.contentMode = .scaleAspectFill
+        postOwnerPorfilImage.contentMode = .scaleToFill
         }
     
     func configurePostOwnerView(postModel:Post) {
