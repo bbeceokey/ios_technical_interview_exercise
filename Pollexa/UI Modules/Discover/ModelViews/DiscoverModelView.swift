@@ -29,9 +29,7 @@ final class DiscoverModelView {
     
     var cell = DiscoverCollectionViewCell()
     weak var viewModelDelegate : ViewModelDelegate?
-    
-    
-    
+ 
 }
 
 protocol ViewModelDelegate : AnyObject {

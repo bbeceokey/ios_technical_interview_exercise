@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discover" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bog-H1-Olx">
-                                <rect key="frame" x="22" y="121.66666666666669" width="104" height="30"/>
+                                <rect key="frame" x="22" y="121.66666666666669" width="99" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -55,6 +55,10 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pk2-qm-u5C">
                                         <rect key="frame" x="292" y="17.000000000000004" width="49.666666666666686" height="34.333333333333343"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34.329999999999998" id="AOg-LF-tQx"/>
+                                            <constraint firstAttribute="width" constant="49.670000000000002" id="GmP-Ti-bWC"/>
+                                        </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="arrowshape.right.circle" catalog="system"/>
                                     </button>
@@ -62,19 +66,17 @@
                                 <color key="backgroundColor" systemColor="systemIndigoColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="3f4-Ks-72v" secondAttribute="trailing" constant="43" id="KYP-hn-y4y"/>
-                                    <constraint firstAttribute="bottom" secondItem="pk2-qm-u5C" secondAttribute="bottom" constant="17" id="V8r-in-vNC"/>
+                                    <constraint firstItem="pk2-qm-u5C" firstAttribute="leading" secondItem="GkY-Ci-Aii" secondAttribute="leading" constant="292" id="b5b-At-jKP"/>
                                     <constraint firstItem="3f4-Ks-72v" firstAttribute="top" secondItem="GkY-Ci-Aii" secondAttribute="top" constant="8.0000000000000036" id="cQs-yC-qj3"/>
-                                    <constraint firstItem="pk2-qm-u5C" firstAttribute="leading" secondItem="GkY-Ci-Aii" secondAttribute="leading" constant="292" id="e67-I7-zOw"/>
-                                    <constraint firstItem="pk2-qm-u5C" firstAttribute="top" secondItem="GkY-Ci-Aii" secondAttribute="top" constant="17" id="led-YH-fug"/>
                                     <constraint firstItem="3f4-Ks-72v" firstAttribute="leading" secondItem="GkY-Ci-Aii" secondAttribute="leading" constant="21" id="p1t-LO-rBD"/>
-                                    <constraint firstItem="pk2-qm-u5C" firstAttribute="top" secondItem="GkY-Ci-Aii" secondAttribute="top" constant="17" id="uQi-MF-spC"/>
+                                    <constraint firstAttribute="bottom" secondItem="pk2-qm-u5C" secondAttribute="bottom" constant="17" id="plf-ar-drC"/>
+                                    <constraint firstAttribute="trailing" secondItem="pk2-qm-u5C" secondAttribute="trailing" constant="22.329999999999998" id="sdk-EL-w1Z"/>
+                                    <constraint firstItem="pk2-qm-u5C" firstAttribute="top" secondItem="GkY-Ci-Aii" secondAttribute="top" constant="17" id="tok-OC-1vb"/>
                                     <constraint firstItem="3f4-Ks-72v" firstAttribute="centerY" secondItem="GkY-Ci-Aii" secondAttribute="centerY" id="vbO-BE-BxM"/>
-                                    <constraint firstAttribute="trailing" secondItem="pk2-qm-u5C" secondAttribute="trailing" constant="22.333333333333314" id="wK1-r0-Tb1"/>
-                                    <constraint firstItem="pk2-qm-u5C" firstAttribute="centerY" secondItem="3f4-Ks-72v" secondAttribute="centerY" id="xzZ-6e-0Zn"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3P-OM-FFg">
-                                <rect key="frame" x="318" y="59" width="47" height="34.333333333333343"/>
+                                <rect key="frame" x="313" y="59" width="47" height="34.333333333333343"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
                             </button>
