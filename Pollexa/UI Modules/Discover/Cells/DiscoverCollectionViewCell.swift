@@ -34,13 +34,38 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
 
     weak var delegate: DiscoverCollectionViewCellDelegate?
     
+    private func setupImages() {
+            
+            let imageSize = CGSize(width: 130, height: 110)
+
+            leftImage.frame.size = imageSize
+            rightImage.frame.size = imageSize
+
+            
+        leftImage.contentMode = .scaleToFill
+            rightImage.contentMode = .scaleToFill
+
+           
+            leftImage.clipsToBounds = true
+            rightImage.clipsToBounds = true
+        }
+    
+    private func setupProfileImage() {
+            let imageSize: CGFloat = 50.0
+        postOwnerPorfilImage.frame.size = CGSize(width: imageSize, height: imageSize)
+        postOwnerPorfilImage.layer.cornerRadius = imageSize / 2
+        postOwnerPorfilImage.clipsToBounds = true
+        postOwnerPorfilImage.contentMode = .scaleAspectFill
+        }
     
     func configurePostOwnerView(postModel:Post) {
+        setupProfileImage()
         postOwnerPorfilImage.image = postModel.user?.image
         postOwnerName.numberOfLines = 0
         postOwnerName.text = postModel.user?.username
         var date = "\(dateCalculate(model: postModel)) ago"
         postRelasedDate.numberOfLines = 0
+        postRelasedDate.preferredMaxLayoutWidth = 200
         postRelasedDate.text = date
         
         if date.contains("month"){
@@ -74,17 +99,16 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
     func addLikeButtonToImage(imageView: UIImageView, atIndex index: Int, postId: String, isLiked : Bool) {
         //imageView.subviews.forEach { $0.removeFromSuperview() }
         if !isLiked{
-            let buttonSize: CGFloat = 40 
+            let buttonSize: CGFloat = 30
            
-                        let xOffset: CGFloat = 10 // Adjust as needed
-                        let yOffset: CGFloat = 60 /// Yuvarlak butonun genişliği ve yüksekliği
+            let xOffset: CGFloat = 10 // Adjust as needed
+            let yOffset: CGFloat = 60 /// Yuvarlak butonun genişliği ve yüksekliği
             let likeButton = UIButton(type: .custom)
-            likeButton.setImage(UIImage(resource: .artboard), for: .normal)
-            likeButton.frame = CGRect(x: xOffset, y: imageView.frame.height - buttonSize + 60, width: buttonSize, height: buttonSize)
+            likeButton.setImage(UIImage(resource: .default), for: .normal)
+            likeButton.frame = CGRect(x: xOffset, y: imageView.frame.height - buttonSize + 70, width: buttonSize, height: buttonSize)
             likeButton.layer.cornerRadius = buttonSize / 2
             likeButton.clipsToBounds = true
             likeButton.tintColor = .red
-            print("IS LIKED-",isLiked)
             likeButton.addTarget(self, action: #selector(likeButtonTapped(_:)), for: .touchUpInside)
             imageView.addSubview(likeButton)
             imageView.isUserInteractionEnabled = true
@@ -102,9 +126,10 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = labelText
         label.numberOfLines = 0
-        label.textColor = .purple
+        label.preferredMaxLayoutWidth = 200
+        label.textColor = .white
         label.textAlignment = .center
-        label.frame = CGRect(x: xOffset, y: imageView.frame.height - buttonSize + 60, width: buttonSize, height: buttonSize)
+        label.frame = CGRect(x: xOffset, y: imageView.frame.height - buttonSize - 30, width: 250, height: buttonSize)
         label.layer.cornerRadius = buttonSize / 2
         label.clipsToBounds = true
         label.isHidden = isHidden
@@ -142,6 +167,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
 
 
     func configurePostDetailView(modelPost: Post){
+        setupImages()
         postDetail.text = modelPost.content
         leftImage.image = modelPost.options[0].image
         rightImage.image = modelPost.options[1].image

@@ -133,6 +133,7 @@
                         <outlet property="postsGeneral" destination="GkY-Ci-Aii" id="S5V-GA-GrN"/>
                         <outlet property="profilAvatar" destination="yok-vP-GRq" id="k7f-ll-2NW"/>
                         <outlet property="seeDetails" destination="W2d-K8-NMb" id="iOg-3B-j8o"/>
+                        <outlet property="seeDetailsBtn" destination="pk2-qm-u5C" id="kHV-65-iJk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

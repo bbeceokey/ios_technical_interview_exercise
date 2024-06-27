@@ -25,9 +25,19 @@ class DiscoverViewController: UIViewController, ViewModelDelegate {
     private let postProvider = PostProvider.shared
     var viewModel: DiscoverModelViewProtocol = DiscoverModelView()
     
+    @IBOutlet weak var seeDetailsBtn: UIButton!
     let nib = UINib(nibName: "DiscoverCollectionViewCell", bundle: nil)
     
+    private func setupProfileImage() {
+            let imageSize: CGFloat = 50.0
+        profilAvatar.frame.size = CGSize(width: imageSize, height: imageSize)
+        profilAvatar.layer.cornerRadius = imageSize / 2
+        profilAvatar.clipsToBounds = true
+        profilAvatar.contentMode = .scaleAspectFill
+        }
+    
     func uiManaged(){
+        setupProfileImage()
         postsGeneral.layer.cornerRadius = 5.0
         profilAvatar.layer.cornerRadius = 5.0
         seeDetails.sizeToFit()
@@ -55,10 +65,6 @@ class DiscoverViewController: UIViewController, ViewModelDelegate {
     
     
     var posts = [Post]()
-    
-    override func viewWillAppear(_ animated: Bool) {
-        print("çalıştı")
-    }
     
     private func flowLayoutSet() -> UICollectionViewFlowLayout {
         let flowLayout = UICollectionViewFlowLayout()
@@ -94,20 +100,20 @@ extension DiscoverViewController : UICollectionViewDelegate, UICollectionViewDat
        }
     
     
-    func likeButtonTappedOnImage(_ index: Int, optionId: String) {
+    func likeButtonTappedOnImage(_ index: Int, postId : String) {
            if let indexPath = viewModel.indexPath(forIndex: index),
            let cell = postsCollectionView.cellForItem(at: indexPath) as? DiscoverCollectionViewCell {
-            
-            guard var postModel = viewModel.post(index: index) else { return }
-            postModel.isLiked = true
-            postModel.likedCount += 1
-            
-            if let optionIndex = postModel.options.firstIndex(where: { $0.id == optionId }) {
-                postModel.options[optionIndex].optionCount += 1
+               if let postIndex = viewModel.posts.firstIndex(where: { $0.id == postId }) {
+                   guard var postModel = viewModel.post(index: postIndex) else { return }
+                   postModel.isLiked = true
+                   postModel.likedCount += 1
+                   postModel.options[index].optionCount += 1
+                   viewModel.updatePost(postModel)
+                   cell.updateUIForLikedState(postModel)
             }
             
-            viewModel.updatePost(postModel)
-            cell.updateUIForLikedState(postModel)
+            
+           
         }
     }
 
