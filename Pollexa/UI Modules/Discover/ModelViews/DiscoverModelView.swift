@@ -54,7 +54,7 @@ extension DiscoverModelView : DiscoverModelViewProtocol{
             case .success(let decodeData):
                 self.posts = decodeData
                 
-                //.delegate?.reloadData()
+                self.delegate?.reloadData()
                 print(posts)
             case .failure(let error):
                 debugPrint(error.localizedDescription)

@@ -97,7 +97,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
      }
     
     func addLikeButtonToImage(imageView: UIImageView, atIndex index: Int, postId: String, isLiked : Bool) {
-        //imageView.subviews.forEach { $0.removeFromSuperview() }
+        imageView.subviews.forEach { $0.removeFromSuperview() }
         if !isLiked{
             let buttonSize: CGFloat = 30
            
@@ -119,6 +119,8 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
     }
     
     func addLabelToImage(imageView: UIImageView, atIndex index: Int, postId: String, labelText: String, isHidden: Bool) {
+        if imageView.subviews.contains(where: { $0 is UILabel }) { return }
+        
         let buttonSize: CGFloat = 40
         let xOffset: CGFloat = 10 // Adjust as needed
         let yOffset: CGFloat = 60
@@ -157,6 +159,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
     
     func updateUIForLikedState(_ postModel: Post) {
             if postModel.isLiked {
+                hideAllButtons()
                 addLabelToImage(imageView: leftImage, atIndex: 0, postId: postModel.id, labelText: viewModel.rangeLeftCalculate(model: postModel), isHidden: false)
                 addLabelToImage(imageView: rightImage, atIndex: 1, postId: postModel.id, labelText: viewModel.rangeRightCalculate(model: postModel), isHidden: false)
             } else {
@@ -164,6 +167,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
                 addLikeButtonToImage(imageView: rightImage, atIndex: 1, postId: postModel.id, isLiked: postModel.isLiked)
             }
         }
+    
 
 
     func configurePostDetailView(modelPost: Post){

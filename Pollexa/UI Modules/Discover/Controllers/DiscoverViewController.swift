@@ -111,11 +111,11 @@ extension DiscoverViewController : UICollectionViewDelegate, UICollectionViewDat
                    viewModel.updatePost(postModel)
                    cell.updateUIForLikedState(postModel)
             }
-            
-            
-           
+
         }
     }
+    
+
 
 }
         
