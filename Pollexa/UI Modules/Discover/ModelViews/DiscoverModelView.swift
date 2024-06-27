@@ -13,7 +13,6 @@ protocol DiscoverModelViewProtocol {
     var delegate: ViewModelDelegate? { get set }
     var numberOfItems : Int { get }
     func post(index: Int) -> Post?
-    func likedPostState(model : inout OptionState)
     func updatePost(_ post: Post)
     var posts: [Post] { get }
     func rangeLeftCalculate(model: Post) -> String
@@ -23,7 +22,16 @@ protocol DiscoverModelViewProtocol {
 
 final class DiscoverModelView {
     private let postProvider = PostProvider.shared
-    private(set) var posts = [Post]()
+    private var internalPosts = [Post]() // Internal storage
+        
+    var posts: [Post] {
+            get {
+                return internalPosts
+            }
+            set {
+                internalPosts = newValue
+            }
+        }
     
     var cell = DiscoverCollectionViewCell()
     weak var viewModelDelegate : ViewModelDelegate?
@@ -82,11 +90,7 @@ extension DiscoverModelView : DiscoverModelViewProtocol{
     func post(index: Int) -> Post? {
         posts[index]
     }
-    
-    func likedPostState( model : inout OptionState) {
-        model.like()
-    }
-    
+
     func rangeLeftCalculate(model: Post) -> String {
         let totalCount = model.likedCount
         let leftCount = model.options[0].optionCount

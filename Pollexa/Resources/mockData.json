@@ -1,0 +1,25 @@
+
+{
+   "id":"post_1",
+   "created_at":"2024-04-29T15:12:15Z",
+   "content":"Which dessert should I serve at my party?",
+   "isLiked": false,
+   "likedCount": 1,
+   "options":[
+      {
+         "id":"option_1",
+         "image_name":"post_1_option_1",
+         "optionCount": 1
+      },
+      {
+         "id":"option_2",
+         "image_name":"post_1_option_2",
+         "optionCount": 0
+      }
+   ],
+   "user":{
+      "id":"user_1",
+      "username":"Alice",
+      "image_name":"avatar_1"
+   }
+}

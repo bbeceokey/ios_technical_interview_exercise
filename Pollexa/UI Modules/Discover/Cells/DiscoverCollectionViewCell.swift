@@ -166,6 +166,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
         leftImage.image = modelPost.options[0].image
         rightImage.image = modelPost.options[1].image
         totalVotes.text = "\(modelPost.likedCount)"
+        totalVotes.text = "5 "
         totalVotes.textColor = .red
     }
     

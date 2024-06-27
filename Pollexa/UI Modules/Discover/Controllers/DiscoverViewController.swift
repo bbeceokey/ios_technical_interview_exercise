@@ -34,7 +34,7 @@ class DiscoverViewController: UIViewController, ViewModelDelegate {
         profilAvatar.contentMode = .scaleAspectFill
     }
     
-    func uiManaged(){
+    private func uiManaged(){
         setupProfileImage()
         postsGeneral.layer.cornerRadius = 5.0
         profilAvatar.layer.cornerRadius = 5.0
