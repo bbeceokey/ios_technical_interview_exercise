@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discover" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bog-H1-Olx">
-                                <rect key="frame" x="22" y="121.66666666666669" width="99" height="30"/>
+                                <rect key="frame" x="22" y="121.66666666666669" width="105" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -64,7 +64,6 @@
                                     <constraint firstItem="pk2-qm-u5C" firstAttribute="top" secondItem="GkY-Ci-Aii" secondAttribute="top" constant="17" id="7Dd-IJ-v3l"/>
                                     <constraint firstAttribute="trailing" secondItem="pk2-qm-u5C" secondAttribute="trailing" constant="22.329999999999998" id="AMK-Vx-gll"/>
                                     <constraint firstAttribute="bottom" secondItem="pk2-qm-u5C" secondAttribute="bottom" constant="17" id="G7y-Gj-ppi"/>
-                                    <constraint firstAttribute="trailing" secondItem="3f4-Ks-72v" secondAttribute="trailing" constant="43" id="KYP-hn-y4y"/>
                                     <constraint firstItem="3f4-Ks-72v" firstAttribute="top" secondItem="GkY-Ci-Aii" secondAttribute="top" constant="8.0000000000000036" id="cQs-yC-qj3"/>
                                     <constraint firstItem="3f4-Ks-72v" firstAttribute="leading" secondItem="GkY-Ci-Aii" secondAttribute="leading" constant="21" id="p1t-LO-rBD"/>
                                     <constraint firstItem="pk2-qm-u5C" firstAttribute="leading" secondItem="GkY-Ci-Aii" secondAttribute="leading" constant="292" id="tRi-Tv-FS5"/>
@@ -72,12 +71,12 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3P-OM-FFg">
-                                <rect key="frame" x="313" y="59" width="47" height="34.333333333333343"/>
+                                <rect key="frame" x="319" y="59" width="47" height="34.333333333333343"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="emc-QS-XRT">
-                                <rect key="frame" x="0.0" y="271" width="392" height="547"/>
+                                <rect key="frame" x="0.0" y="271" width="393" height="547"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4EJ-h4-nep">
                                     <size key="itemSize" width="128" height="128"/>
@@ -87,10 +86,10 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="b1u-Ca-JGP" customClass="DiscoverCollectionViewCell" customModule="Pollexa" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="RRd-uC-j5z">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
                                     </collectionViewCell>
@@ -108,7 +107,6 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="emc-QS-XRT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0Ce-qs-c0L"/>
-                            <constraint firstItem="emc-QS-XRT" firstAttribute="centerX" secondItem="GkY-Ci-Aii" secondAttribute="centerX" id="1lg-xj-OWu"/>
                             <constraint firstItem="emc-QS-XRT" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="2k1-ee-Jcr"/>
                             <constraint firstItem="Bog-H1-Olx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="22" id="3X2-Oc-cby"/>
                             <constraint firstItem="GkY-Ci-Aii" firstAttribute="top" secondItem="Bog-H1-Olx" secondAttribute="bottom" constant="8" id="XgE-1e-Plr"/>
