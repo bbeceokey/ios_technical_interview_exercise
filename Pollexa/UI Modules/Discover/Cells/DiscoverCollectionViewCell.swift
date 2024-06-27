@@ -35,19 +35,15 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
     weak var delegate: DiscoverCollectionViewCellDelegate?
     
     private func setupImages() {
-            
-            let imageSize = CGSize(width: 130, height: 110)
-
-            leftImage.frame.size = imageSize
-            rightImage.frame.size = imageSize
-
-            
+        let imageSize = CGSize(width: 130, height: 110)
+        leftImage.frame.size = imageSize
+        rightImage.frame.size = imageSize
+        
         leftImage.contentMode = .scaleToFill
-            rightImage.contentMode = .scaleToFill
-
-           
-            leftImage.clipsToBounds = true
-            rightImage.clipsToBounds = true
+        rightImage.contentMode = .scaleToFill
+        
+        leftImage.clipsToBounds = true
+        rightImage.clipsToBounds = true
         }
     
     private func setupProfileImage() {
@@ -76,9 +72,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
         }
         
     }
-    
-    
-    
+
     fileprivate func dateCalculate(model: Post) -> String {
         let dateFormatter = ISO8601DateFormatter()
         dateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
@@ -122,7 +116,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
         if imageView.subviews.contains(where: { $0 is UILabel }) { return }
         
         let buttonSize: CGFloat = 40
-        let xOffset: CGFloat = 10 // Adjust as needed
+        let xOffset: CGFloat = 10
         let yOffset: CGFloat = 60
 
         let label = UILabel()
@@ -136,7 +130,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
         label.clipsToBounds = true
         label.isHidden = isHidden
         imageView.addSubview(label)
-        label.tag = index + 1000 // Use a different tag to distinguish from the button
+        label.tag = index + 1000
         label.accessibilityIdentifier = postId
     }
     func hideAllButtons() {
@@ -144,16 +138,13 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
            rightImage.subviews.compactMap { $0 as? UIButton }.first?.isHidden = true
     
        }
-    
-   
+
     
     @objc func likeButtonTapped(_ sender: UIButton) {
         hideAllButtons()
             if let postId = sender.accessibilityIdentifier {
                 delegate?.likeButtonTappedOnImage(sender.tag, postId: postId)
-                
-                
-                //updateLikeButtonState(for: sender.imageView!, optionId: optionId)
+
             }
         }
     
@@ -169,7 +160,6 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
         }
     
 
-
     func configurePostDetailView(modelPost: Post){
         setupImages()
         postDetail.text = modelPost.content
@@ -178,8 +168,5 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
         totalVotes.text = "\(modelPost.likedCount)"
         totalVotes.numberOfLines = 0
     }
-    
-    
-   
     
 }

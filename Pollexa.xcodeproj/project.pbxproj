@@ -23,8 +23,6 @@
 		EBF042422C260FAE00544CE8 /* DiscoverCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF042402C260FAE00544CE8 /* DiscoverCollectionViewCell.swift */; };
 		EBF042432C260FAE00544CE8 /* DiscoverCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBF042412C260FAE00544CE8 /* DiscoverCollectionViewCell.xib */; };
 		EBF042452C26246F00544CE8 /* OptionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF042442C26246F00544CE8 /* OptionState.swift */; };
-		EBFEA45B2C26F8FF00E2CA87 /* UICollectioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFEA45A2C26F8FF00E2CA87 /* UICollectioView.swift */; };
-		EBFEA45D2C26F92600E2CA87 /* UICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFEA45C2C26F92600E2CA87 /* UICollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,8 +44,6 @@
 		EBF042402C260FAE00544CE8 /* DiscoverCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCollectionViewCell.swift; sourceTree = "<group>"; };
 		EBF042412C260FAE00544CE8 /* DiscoverCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscoverCollectionViewCell.xib; sourceTree = "<group>"; };
 		EBF042442C26246F00544CE8 /* OptionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionState.swift; sourceTree = "<group>"; };
-		EBFEA45A2C26F8FF00E2CA87 /* UICollectioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectioView.swift; sourceTree = "<group>"; };
-		EBFEA45C2C26F92600E2CA87 /* UICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +136,6 @@
 		6E3A36252BF2602100ECE78C /* Discover */ = {
 			isa = PBXGroup;
 			children = (
-				EBFEA4592C26F8DC00E2CA87 /* Helperws */,
 				EBF0423F2C260F7400544CE8 /* Cells */,
 				EBF0423E2C260F6200544CE8 /* ModelViews */,
 				6E3A36262BF2602900ECE78C /* Controllers */,
@@ -180,15 +175,6 @@
 				EBF042402C260FAE00544CE8 /* DiscoverCollectionViewCell.swift */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		EBFEA4592C26F8DC00E2CA87 /* Helperws */ = {
-			isa = PBXGroup;
-			children = (
-				EBFEA45A2C26F8FF00E2CA87 /* UICollectioView.swift */,
-				EBFEA45C2C26F92600E2CA87 /* UICollectionViewCell.swift */,
-			);
-			path = Helperws;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,14 +252,12 @@
 			files = (
 				6E3A36062BF2563400ECE78C /* DiscoverViewController.swift in Sources */,
 				6E3A36022BF2563400ECE78C /* AppDelegate.swift in Sources */,
-				EBFEA45D2C26F92600E2CA87 /* UICollectionViewCell.swift in Sources */,
 				6E3A361A2BF25DAC00ECE78C /* User.swift in Sources */,
 				EBF042422C260FAE00544CE8 /* DiscoverCollectionViewCell.swift in Sources */,
 				6E3A36162BF25D8D00ECE78C /* PostProvider.swift in Sources */,
 				6E3A361C2BF25F2900ECE78C /* PostOption.swift in Sources */,
 				EB7BF5072C2DCB1B008AAFE2 /* PostManager.swift in Sources */,
 				EBF0423D2C260F5B00544CE8 /* DiscoverModelView.swift in Sources */,
-				EBFEA45B2C26F8FF00E2CA87 /* UICollectioView.swift in Sources */,
 				6E3A36042BF2563400ECE78C /* SceneDelegate.swift in Sources */,
 				6E3A36182BF25DA800ECE78C /* Post.swift in Sources */,
 				EBF042452C26246F00544CE8 /* OptionState.swift in Sources */,

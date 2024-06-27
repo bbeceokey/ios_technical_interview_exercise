@@ -17,25 +17,22 @@ class DiscoverViewController: UIViewController, ViewModelDelegate {
     @IBOutlet weak var postsGeneral: UIView!
     @IBOutlet weak var postAddedBtn: UIButton!
     @IBOutlet weak var profilAvatar: UIImageView!
-    
     @IBOutlet weak var activePoll: UILabel!
-    
     @IBOutlet weak var seeDetails: UILabel!
-    // MARK: - Properties
+    @IBOutlet weak var seeDetailsBtn: UIButton!
+    
     private let postProvider = PostProvider.shared
     var viewModel: DiscoverModelViewProtocol = DiscoverModelView()
     let postManager = PostManager.shared
-    
-    @IBOutlet weak var seeDetailsBtn: UIButton!
     let nib = UINib(nibName: "DiscoverCollectionViewCell", bundle: nil)
     
     private func setupProfileImage() {
-            let imageSize: CGFloat = 50.0
+        let imageSize: CGFloat = 50.0
         profilAvatar.frame.size = CGSize(width: imageSize, height: imageSize)
         profilAvatar.layer.cornerRadius = imageSize / 2
         profilAvatar.clipsToBounds = true
         profilAvatar.contentMode = .scaleAspectFill
-        }
+    }
     
     func uiManaged(){
         setupProfileImage()
@@ -86,8 +83,8 @@ extension DiscoverViewController : UICollectionViewDelegate, UICollectionViewDat
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! DiscoverCollectionViewCell
-           var postModel = viewModel.post(index: indexPath.row)!
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! DiscoverCollectionViewCell
+        var postModel = viewModel.post(index: indexPath.row)!
         if postManager.getPostInfo(postId: postModel.id) != nil || postModel.isLiked{
             var newModel = postManager.getPostInfo(postId: postModel.id)
             postModel.likedCount = newModel?.totalVotes ?? 0
@@ -110,24 +107,22 @@ extension DiscoverViewController : UICollectionViewDelegate, UICollectionViewDat
     
     
     func likeButtonTappedOnImage(_ index: Int, postId : String) {
-           if let indexPath = viewModel.indexPath(forIndex: index),
+        if let indexPath = viewModel.indexPath(forIndex: index),
            let cell = postsCollectionView.cellForItem(at: indexPath) as? DiscoverCollectionViewCell {
-               if let postIndex = viewModel.posts.firstIndex(where: { $0.id == postId }) {
-                   guard var postModel = viewModel.post(index: postIndex) else { return }
-                   postModel.isLiked = true
-                   postModel.likedCount += 1
-                   postModel.options[index].optionCount += 1
-                   viewModel.updatePost(postModel)
-                  
-                   postManager.savePostInfo(postId: postId, optionCount1:postModel.options[0].optionCount, optionCount2: postModel.options[1].optionCount, totalVotes: postModel.likedCount, isLiked: postModel.isLiked)
-                   cell.updateUIForLikedState(postModel)
+            if let postIndex = viewModel.posts.firstIndex(where: { $0.id == postId }) {
+               guard var postModel = viewModel.post(index: postIndex) else { return }
+               postModel.isLiked = true
+               postModel.likedCount += 1
+               postModel.options[index].optionCount += 1
+               viewModel.updatePost(postModel)
+              
+               postManager.savePostInfo(postId: postId, optionCount1:postModel.options[0].optionCount, optionCount2: postModel.options[1].optionCount, totalVotes: postModel.likedCount, isLiked: postModel.isLiked)
+               cell.updateUIForLikedState(postModel)
             }
 
         }
     }
     
-
-
 }
         
 
