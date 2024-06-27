@@ -42,6 +42,7 @@ class DiscoverViewController: UIViewController, ViewModelDelegate {
         activePoll.text = "2 Poll Active"
         activePoll.numberOfLines = 0
         activePoll.preferredMaxLayoutWidth = 400
+        seeDetailsBtn.backgroundColor = .white
     }
 
 

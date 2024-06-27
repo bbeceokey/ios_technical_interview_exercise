@@ -14,8 +14,6 @@ protocol DiscoverModelViewProtocol {
     var numberOfItems : Int { get }
     func post(index: Int) -> Post?
     func likedPostState(model : inout OptionState)
-    //func rangeCalculate(model: Post, optionID: String) -> String
-    //func totalVoteCounts(modelPost: Post) -> Int
     func updatePost(_ post: Post)
     var posts: [Post] { get }
     func rangeLeftCalculate(model: Post) -> String
@@ -40,11 +38,11 @@ protocol ViewModelDelegate : AnyObject {
 extension DiscoverModelView : DiscoverModelViewProtocol{
     
     func updatePost(_ post: Post) {
-            if let index = posts.firstIndex(where: { $0.id == post.id }) {
-                posts[index] = post
-                print(post.options)
-            }
+        if let index = posts.firstIndex(where: { $0.id == post.id }) {
+            posts[index] = post
+            print(post.options)
         }
+    }
     
     func fetchPosts()  {
         postProvider.fetchAll { result in
@@ -62,19 +60,19 @@ extension DiscoverModelView : DiscoverModelViewProtocol{
     }
     
     func indexPath(forIndex index: Int) -> IndexPath? {
-            guard index < posts.count else { return nil }
-            return IndexPath(item: index, section: 0)
-        }
+        guard index < posts.count else { return nil }
+        return IndexPath(item: index, section: 0)
+    }
     
     
     var delegate: ViewModelDelegate? {
-            get {
-                return viewModelDelegate
-            }
-            set {
-                viewModelDelegate = newValue
-            }
+        get {
+            return viewModelDelegate
         }
+        set {
+            viewModelDelegate = newValue
+        }
+    }
     
     
     var numberOfItems: Int {

@@ -55,23 +55,19 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pk2-qm-u5C">
                                         <rect key="frame" x="292" y="17.000000000000004" width="49.666666666666686" height="34.333333333333343"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="34.329999999999998" id="AOg-LF-tQx"/>
-                                            <constraint firstAttribute="width" constant="49.670000000000002" id="GmP-Ti-bWC"/>
-                                        </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="arrowshape.right.circle" catalog="system"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemIndigoColor"/>
                                 <constraints>
+                                    <constraint firstItem="pk2-qm-u5C" firstAttribute="top" secondItem="GkY-Ci-Aii" secondAttribute="top" constant="17" id="7Dd-IJ-v3l"/>
+                                    <constraint firstAttribute="trailing" secondItem="pk2-qm-u5C" secondAttribute="trailing" constant="22.329999999999998" id="AMK-Vx-gll"/>
+                                    <constraint firstAttribute="bottom" secondItem="pk2-qm-u5C" secondAttribute="bottom" constant="17" id="G7y-Gj-ppi"/>
                                     <constraint firstAttribute="trailing" secondItem="3f4-Ks-72v" secondAttribute="trailing" constant="43" id="KYP-hn-y4y"/>
-                                    <constraint firstItem="pk2-qm-u5C" firstAttribute="leading" secondItem="GkY-Ci-Aii" secondAttribute="leading" constant="292" id="b5b-At-jKP"/>
                                     <constraint firstItem="3f4-Ks-72v" firstAttribute="top" secondItem="GkY-Ci-Aii" secondAttribute="top" constant="8.0000000000000036" id="cQs-yC-qj3"/>
                                     <constraint firstItem="3f4-Ks-72v" firstAttribute="leading" secondItem="GkY-Ci-Aii" secondAttribute="leading" constant="21" id="p1t-LO-rBD"/>
-                                    <constraint firstAttribute="bottom" secondItem="pk2-qm-u5C" secondAttribute="bottom" constant="17" id="plf-ar-drC"/>
-                                    <constraint firstAttribute="trailing" secondItem="pk2-qm-u5C" secondAttribute="trailing" constant="22.329999999999998" id="sdk-EL-w1Z"/>
-                                    <constraint firstItem="pk2-qm-u5C" firstAttribute="top" secondItem="GkY-Ci-Aii" secondAttribute="top" constant="17" id="tok-OC-1vb"/>
+                                    <constraint firstItem="pk2-qm-u5C" firstAttribute="leading" secondItem="GkY-Ci-Aii" secondAttribute="leading" constant="292" id="tRi-Tv-FS5"/>
                                     <constraint firstItem="3f4-Ks-72v" firstAttribute="centerY" secondItem="GkY-Ci-Aii" secondAttribute="centerY" id="vbO-BE-BxM"/>
                                 </constraints>
                             </view>
