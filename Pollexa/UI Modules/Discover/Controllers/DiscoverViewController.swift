@@ -24,6 +24,7 @@ class DiscoverViewController: UIViewController, ViewModelDelegate {
     // MARK: - Properties
     private let postProvider = PostProvider.shared
     var viewModel: DiscoverModelViewProtocol = DiscoverModelView()
+    let postManager = PostManager.shared
     
     @IBOutlet weak var seeDetailsBtn: UIButton!
     let nib = UINib(nibName: "DiscoverCollectionViewCell", bundle: nil)
@@ -87,6 +88,14 @@ extension DiscoverViewController : UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! DiscoverCollectionViewCell
            var postModel = viewModel.post(index: indexPath.row)!
+        if postManager.getPostInfo(postId: postModel.id) != nil || postModel.isLiked{
+            var newModel = postManager.getPostInfo(postId: postModel.id)
+            postModel.likedCount = newModel?.totalVotes ?? 0
+            postModel.options[0].optionCount = newModel?.optionCount1 ?? 0
+            postModel.options[1].optionCount = newModel?.optionCount2 ?? 0
+            postModel.isLiked = true
+        
+        }
            cell.delegate = self
            cell.viewModel = viewModel
            cell.configurePostOwnerView(postModel: postModel)
@@ -109,6 +118,8 @@ extension DiscoverViewController : UICollectionViewDelegate, UICollectionViewDat
                    postModel.likedCount += 1
                    postModel.options[index].optionCount += 1
                    viewModel.updatePost(postModel)
+                  
+                   postManager.savePostInfo(postId: postId, optionCount1:postModel.options[0].optionCount, optionCount2: postModel.options[1].optionCount, totalVotes: postModel.likedCount, isLiked: postModel.isLiked)
                    cell.updateUIForLikedState(postModel)
             }
 
