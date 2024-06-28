@@ -41,7 +41,7 @@ People can sometimes be indecisive, even about the most straightforward decision
 - Go crazy!
 
 **What Extra Added**
--Unit - Ui Test
+- Unit / Ui Test
 
 **Which Simulatör Used**
 - İphone 15
