@@ -40,5 +40,8 @@ People can sometimes be indecisive, even about the most straightforward decision
 - The percentage displayed in polls should be the ratio of options chosen to the total number of participants in the survey.
 - Go crazy!
 
->**What Extra Added**
-Unit - Ui Test
+**What Extra Added**
+-Unit - Ui Test
+
+**Which Simulatör Used **
+- İphone 15
