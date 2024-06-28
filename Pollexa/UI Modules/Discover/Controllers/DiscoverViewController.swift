@@ -59,9 +59,19 @@ class DiscoverViewController: UIViewController, ViewModelDelegate {
 
         postsCollectionView.register(nib, forCellWithReuseIdentifier: "postCell")
         viewModel.fetchPosts()
+        addedIdentifer()
         
     }
     
+    
+    private func addedIdentifer(){
+        postsCollectionView.accessibilityIdentifier = "postsCollectionView"
+                postAddedBtn.accessibilityIdentifier = "postAddedBtn"
+                profilAvatar.accessibilityIdentifier = "profilAvatar"
+                activePoll.accessibilityIdentifier = "activePoll"
+                seeDetails.accessibilityIdentifier = "seeDetails"
+                seeDetailsBtn.accessibilityIdentifier = "seeDetailsBtn"
+    }
     
     var posts = [Post]()
     
