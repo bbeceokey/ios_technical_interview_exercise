@@ -162,7 +162,6 @@
 				6E3A360A2BF2563500ECE78C /* Assets.xcassets */,
 				6E3A361F2BF25FD900ECE78C /* posts.json */,
 				6E3A360F2BF2563500ECE78C /* Info.plist */,
-				EB7BF5182C2DF6B4008AAFE2 /* mockData.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -233,6 +232,7 @@
 		EB7BF5372C2E04EC008AAFE2 /* PollexaTests */ = {
 			isa = PBXGroup;
 			children = (
+				EB7BF5182C2DF6B4008AAFE2 /* mockData.json */,
 				EB7BF5382C2E04EC008AAFE2 /* PollexaTests.swift */,
 			);
 			path = PollexaTests;

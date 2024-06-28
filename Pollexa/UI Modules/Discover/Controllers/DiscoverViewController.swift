@@ -66,11 +66,11 @@ class DiscoverViewController: UIViewController, ViewModelDelegate {
     
     private func addedIdentifer(){
         postsCollectionView.accessibilityIdentifier = "postsCollectionView"
-                postAddedBtn.accessibilityIdentifier = "postAddedBtn"
-                profilAvatar.accessibilityIdentifier = "profilAvatar"
-                activePoll.accessibilityIdentifier = "activePoll"
-                seeDetails.accessibilityIdentifier = "seeDetails"
-                seeDetailsBtn.accessibilityIdentifier = "seeDetailsBtn"
+        postAddedBtn.accessibilityIdentifier = "postAddedBtn"
+        profilAvatar.accessibilityIdentifier = "profilAvatar"
+        activePoll.accessibilityIdentifier = "activePoll"
+        seeDetails.accessibilityIdentifier = "seeDetails"
+        seeDetailsBtn.accessibilityIdentifier = "seeDetailsBtn"
     }
     
     var posts = [Post]()
