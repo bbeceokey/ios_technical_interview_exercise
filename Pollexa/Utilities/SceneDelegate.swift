@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let image = UIImage(named: "AppIcon") {
             let imageView = UIImageView(image: image)
             
-            imageView.frame = CGRect(x: 100, y: 100, width: 200, height: 200)
+            imageView.frame = CGRect(x: 100, y: 325, width: 200, height: 200)
             
             // launchScreenVC'nin view'a UIImageView'i ekleyin
             launchScreenVC?.view.addSubview(imageView)

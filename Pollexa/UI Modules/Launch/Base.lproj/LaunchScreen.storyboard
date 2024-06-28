@@ -16,17 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1QI-TF-fLS">
-                                <rect key="frame" x="16" y="59" width="361" height="759"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1QI-TF-fLS">
+                                <rect key="frame" x="16" y="277" width="361" height="299"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1QI-TF-fLS" secondAttribute="trailing" constant="16" id="4R8-YW-JTx"/>
-                            <constraint firstItem="1QI-TF-fLS" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="RXf-Dj-uQq"/>
-                            <constraint firstItem="1QI-TF-fLS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="f8c-yX-3te"/>
-                            <constraint firstItem="1QI-TF-fLS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="xR3-nX-LiQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1QI-TF-fLS" secondAttribute="trailing" constant="16" id="dSo-oP-xOE"/>
+                            <constraint firstItem="1QI-TF-fLS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="218" id="fMH-Pb-82t"/>
+                            <constraint firstItem="1QI-TF-fLS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="r9z-Y4-ixB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1QI-TF-fLS" secondAttribute="bottom" constant="242" id="uWB-EW-tdc"/>
                         </constraints>
                     </view>
                 </viewController>

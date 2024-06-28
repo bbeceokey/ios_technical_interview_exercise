@@ -23,7 +23,6 @@
 		EB56951C2C2EB69500F08A46 /* DiscoverMockTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB56951B2C2EB69500F08A46 /* DiscoverMockTest.swift */; };
 		EB7BF5072C2DCB1B008AAFE2 /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7BF5062C2DCB1B008AAFE2 /* PostManager.swift */; };
 		EB7BF5192C2DF6B4008AAFE2 /* mockData.json in Resources */ = {isa = PBXBuildFile; fileRef = EB7BF5182C2DF6B4008AAFE2 /* mockData.json */; };
-		EB7BF5392C2E04EC008AAFE2 /* PollexaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7BF5382C2E04EC008AAFE2 /* PollexaTests.swift */; };
 		EBF0423D2C260F5B00544CE8 /* DiscoverModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF0423C2C260F5B00544CE8 /* DiscoverModelView.swift */; };
 		EBF042422C260FAE00544CE8 /* DiscoverCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF042402C260FAE00544CE8 /* DiscoverCollectionViewCell.swift */; };
 		EBF042432C260FAE00544CE8 /* DiscoverCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBF042412C260FAE00544CE8 /* DiscoverCollectionViewCell.xib */; };
@@ -81,7 +80,6 @@
 		EB7BF5062C2DCB1B008AAFE2 /* PostManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
 		EB7BF5182C2DF6B4008AAFE2 /* mockData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mockData.json; sourceTree = "<group>"; };
 		EB7BF5362C2E04EC008AAFE2 /* PollexaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PollexaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB7BF5382C2E04EC008AAFE2 /* PollexaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollexaTests.swift; sourceTree = "<group>"; };
 		EB7BF53F2C2E06E0008AAFE2 /* Pollexa.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Pollexa.xctestplan; sourceTree = "<group>"; };
 		EBF0423C2C260F5B00544CE8 /* DiscoverModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverModelView.swift; sourceTree = "<group>"; };
 		EBF042402C260FAE00544CE8 /* DiscoverCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -235,7 +233,6 @@
 			isa = PBXGroup;
 			children = (
 				EB7BF5182C2DF6B4008AAFE2 /* mockData.json */,
-				EB7BF5382C2E04EC008AAFE2 /* PollexaTests.swift */,
 				EB56951B2C2EB69500F08A46 /* DiscoverMockTest.swift */,
 			);
 			path = PollexaTests;
@@ -421,7 +418,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB56951C2C2EB69500F08A46 /* DiscoverMockTest.swift in Sources */,
-				EB7BF5392C2E04EC008AAFE2 /* PollexaTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
