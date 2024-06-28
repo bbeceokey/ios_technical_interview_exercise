@@ -18,6 +18,7 @@ protocol DiscoverModelViewProtocol {
     func rangeLeftCalculate(model: Post) -> String
     func rangeRightCalculate(model: Post) -> String
     func indexPath(forIndex index: Int) -> IndexPath?
+    func likedPostsCount() -> Int
 }
 
 final class DiscoverModelView {
@@ -44,6 +45,17 @@ protocol ViewModelDelegate : AnyObject {
 }
 
 extension DiscoverModelView : DiscoverModelViewProtocol{
+    
+    func likedPostsCount() -> Int {
+        var likedPostCount = 0
+        for post in self.posts {
+            if post.isLiked {
+                likedPostCount += 1
+            }
+        }
+        return likedPostCount
+    }
+    
     
     func updatePost(_ post: Post) {
         if let index = posts.firstIndex(where: { $0.id == post.id }) {

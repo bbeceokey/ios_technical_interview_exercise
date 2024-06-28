@@ -39,7 +39,7 @@ class DiscoverViewController: UIViewController, ViewModelDelegate {
         postsGeneral.layer.cornerRadius = 5.0
         profilAvatar.layer.cornerRadius = 5.0
         seeDetails.sizeToFit()
-        activePoll.text = "2 Poll Active"
+        activePoll.text = "\(viewModel.likedPostsCount()) Poll Active"
         activePoll.numberOfLines = 0
         activePoll.preferredMaxLayoutWidth = 400
         seeDetailsBtn.backgroundColor = .white
